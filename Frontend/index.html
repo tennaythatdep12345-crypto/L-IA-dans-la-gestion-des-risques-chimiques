@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Système d'analyse des risques chimiques en laboratoire - Projet IUT Génie Chimique">
+    <title>Gestion des Risques Chimiques - Analyse IA</title>
+    
+    <!-- Lien vers la feuille de style CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon (optionnel) -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- ====================================================================== -->
+    <!-- HEADER / EN-TÊTE -->
+    <!-- ====================================================================== -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">
+                <span class="icon">⚗️</span>
+                Système d'Analyse des Risques Chimiques
+            </h1>
+            <p class="header-subtitle">
+                Intelligence Artificielle appliquée à la gestion des risques en laboratoire de R&D
+            </p>
+            <p class="header-info">
+                Projet IUT Génie Chimique - 1ère année
+            </p>
+        </div>
+    </header>
+
+    <!-- ====================================================================== -->
+    <!-- SECTION PRINCIPALE -->
+    <!-- ====================================================================== -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- ============================================================== -->
+            <!-- FORMULAIRE D'ANALYSE -->
+            <!-- ============================================================== -->
+            <section class="form-section card">
+                <h2 class="section-title">📋 Formulaire d'Analyse</h2>
+                <p class="section-description">
+                    Saisissez les informations sur les substances chimiques à analyser et les conditions de laboratoire.
+                </p>
+                
+                <form id="analysisForm" class="analysis-form">
+                    
+                    <!-- Substances chimiques -->
+                    <div class="form-group">
+                        <label for="substances" class="form-label">
+                            <strong>Substances chimiques *</strong>
+                            <span class="label-hint">(Une substance par ligne)</span>
+                        </label>
+                        <textarea 
+                            id="substances" 
+                            name="substances" 
+                            class="form-control" 
+                            rows="5" 
+                            placeholder="Éthanol&#10;Acétone&#10;Acide sulfurique"
+                            required
+                        ></textarea>
+                        <small class="form-help">
+                            Entrez chaque substance sur une nouvelle ligne. Vous pouvez utiliser le nom commun ou le numéro CAS.
+                        </small>
+                    </div>
+                    
+                    <!-- Quantités (optionnel) -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <strong>Quantités</strong>
+                            <span class="label-hint">(Optionnel - en mL ou g)</span>
+                        </label>
+                        <div id="quantitiesContainer" class="quantities-container">
+                            <!-- Les champs de quantités seront générés dynamiquement par JavaScript -->
+                            <p class="form-help">
+                                Les champs de quantités apparaîtront automatiquement pour chaque substance saisie ci-dessus.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contexte de laboratoire -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <strong>Contexte de laboratoire</strong>
+                            <span class="label-hint">(Optionnel)</span>
+                        </label>
+                        
+                        <div class="context-inputs">
+                            <!-- Ventilation -->
+                            <div class="checkbox-group">
+                                <input 
+                                    type="checkbox" 
+                                    id="ventilation" 
+                                    name="ventilation" 
+                                    checked
+                                >
+                                <label for="ventilation">
+                                    Ventilation adéquate (hotte aspirante disponible)
+                                </label>
+                            </div>
+                            
+                            <!-- Température -->
+                            <div class="input-group">
+                                <label for="temperature">Température du laboratoire (°C):</label>
+                                <input 
+                                    type="number" 
+                                    id="temperature" 
+                                    name="temperature" 
+                                    class="form-control-inline" 
+                                    min="-10" 
+                                    max="50" 
+                                    step="0.5"
+                                    value="22"
+                                    placeholder="22"
+                                >
+                            </div>
+                            
+                            <!-- Humidité (optionnel) -->
+                            <div class="input-group">
+                                <label for="humidity">Humidité relative (%):</label>
+                                <input 
+                                    type="number" 
+                                    id="humidity" 
+                                    name="humidity" 
+                                    class="form-control-inline" 
+                                    min="0" 
+                                    max="100" 
+                                    step="1"
+                                    placeholder="50"
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Boutons d'action -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="analyzeBtn">
+                            <span class="btn-icon">🔍</span>
+                            Analyser les risques
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="resetBtn">
+                            <span class="btn-icon">🔄</span>
+                            Réinitialiser
+                        </button>
+                    </div>
+                    
+                    <!-- Indicateur de chargement -->
+                    <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyse en cours... Veuillez patienter.</p>
+                    </div>
+                    
+                </form>
+            </section>
+            
+            <!-- ============================================================== -->
+            <!-- SECTION DES RÉSULTATS -->
+            <!-- ============================================================== -->
+            <section id="resultsSection" class="results-section" style="display: none;">
+                
+                <!-- Carte de résumé global -->
+                <div class="card result-summary">
+                    <h2 class="section-title">📊 Résultat de l'Analyse</h2>
+                    
+                    <div class="global-score-container">
+                        <div class="score-display">
+                            <div class="score-label">Score Global</div>
+                            <div id="globalScore" class="score-value">--</div>
+                            <div class="score-max">/ 100</div>
+                        </div>
+                        
+                        <div class="risk-level-container">
+                            <div class="risk-label">Niveau de Risque</div>
+                            <div id="riskLevel" class="risk-badge risk-unknown">
+                                --
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="globalExplanation" class="global-explanation">
+                        <!-- L'explication globale sera insérée ici par JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Détails par catégorie -->
+                <div class="card">
+                    <h3 class="subsection-title">📈 Détails par Catégorie de Risque</h3>
+                    
+                    <div class="categories-grid">
+                        
+                        <!-- Inflammabilité -->
+                        <div class="category-card">
+                            <div class="category-header">
+                                <span class="category-icon">🔥</span>
+                                <h4 class="category-title">Inflammabilité</h4>
+                            </div>
+                            <div class="category-score">
+                                Score: <span id="inflameScore" class="score-number">--</span>
+                            </div>
+                            <div id="inflameExplanation" class="category-explanation">
+                                <!-- Explication insérée par JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Toxicité -->
+                        <div class="category-card">
+                            <div class="category-header">
+                                <span class="category-icon">☠️</span>
+                                <h4 class="category-title">Toxicité</h4>
+                            </div>
+                            <div class="category-score">
+                                Score: <span id="toxicityScore" class="score-number">--</span>
+                            </div>
+                            <div id="toxicityExplanation" class="category-explanation">
+                                <!-- Explication insérée par JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <!-- Incompatibilités -->
+                        <div class="category-card">
+                            <div class="category-header">
+                                <span class="category-icon">⚠️</span>
+                                <h4 class="category-title">Incompatibilités</h4>
+                            </div>
+                            <div class="category-score">
+                                Score: <span id="incompatScore" class="score-number">--</span>
+                            </div>
+                            <div id="incompatExplanation" class="category-explanation">
+                                <!-- Explication insérée par JavaScript -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Substances analysées -->
+                <div class="card">
+                    <h3 class="subsection-title">🧪 Substances Analysées</h3>
+                    <div id="substancesDetails" class="substances-list">
+                        <!-- Liste des substances insérée par JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Recommandations de sécurité -->
+                <div class="card recommendations-card">
+                    <h3 class="subsection-title">✅ Recommandations de Sécurité</h3>
+                    <div id="recommendations" class="recommendations-list">
+                        <!-- Liste des recommandations insérée par JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Avertissements (si présents) -->
+                <div id="warningsCard" class="card warnings-card" style="display: none;">
+                    <h3 class="subsection-title">⚡ Avertissements</h3>
+                    <div id="warnings" class="warnings-list">
+                        <!-- Liste des avertissements insérée par JavaScript -->
+                    </div>
+                </div>
+                
+            </section>
+            
+            <!-- ============================================================== -->
+            <!-- SECTION DES ERREURS -->
+            <!-- ============================================================== -->
+            <section id="errorSection" class="error-section card" style="display: none;">
+                <h3 class="section-title error-title">❌ Erreur</h3>
+                <div id="errorMessage" class="error-message">
+                    <!-- Message d'erreur inséré par JavaScript -->
+                </div>
+                <button class="btn btn-secondary" onclick="document.getElementById('errorSection').style.display='none'">
+                    Fermer
+                </button>
+            </section>
+            
+        </div>
+    </main>
+    
+    <!-- ====================================================================== -->
+    <!-- FOOTER / PIED DE PAGE -->
+    <!-- ====================================================================== -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2025 - Projet IUT Génie Chimique - Système d'Analyse des Risques Chimiques
+            </p>
+            <p class="footer-disclaimer">
+                <strong>Avertissement:</strong> Ce système est un outil pédagogique d'aide à la décision. 
+                Il ne remplace pas une évaluation professionnelle par un expert en sécurité chimique. 
+                Consultez toujours les fiches de données de sécurité (FDS) avant toute manipulation.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- ====================================================================== -->
+    <!-- SCRIPTS JAVASCRIPT -->
+    <!-- ====================================================================== -->
+    
+    <!-- Script principal de l'application -->
+    <script src="js/app.js"></script>
+    
+</body>
+</html>

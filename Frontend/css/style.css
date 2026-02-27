@@ -1,0 +1,862 @@
+/* frontend/css/style.css */
+/**
+ * Feuille de style pour le système d'analyse des risques chimiques
+ * Projet IUT Génie Chimique - 1ère année
+ * 
+ * Structure:
+ * 1. Variables CSS et réinitialisations
+ * 2. Styles de base (body, typographie)
+ * 3. Header et navigation
+ * 4. Conteneurs et mise en page
+ * 5. Formulaires
+ * 6. Résultats et cartes
+ * 7. Indicateurs de risque
+ * 8. Recommandations et listes
+ * 9. Messages d'erreur
+ * 10. Footer
+ * 11. Animations et transitions
+ * 12. Responsive design
+ */
+
+/* ========================================================================== */
+/* 1. VARIABLES CSS ET RÉINITIALISATIONS */
+/* ========================================================================== */
+
+:root {
+    /* Palette de couleurs */
+    --color-primary: #2563eb;
+    --color-primary-dark: #1e40af;
+    --color-secondary: #64748b;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-danger: #ef4444;
+    
+    /* Niveaux de risque */
+    --color-risk-faible: #10b981;
+    --color-risk-moyen: #f59e0b;
+    --color-risk-eleve: #ef4444;
+    
+    /* Couleurs de fond */
+    --color-bg-main: #f8fafc;
+    --color-bg-card: #ffffff;
+    --color-bg-header: #1e293b;
+    --color-bg-footer: #334155;
+    
+    /* Couleurs de texte */
+    --color-text-main: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-text-light: #ffffff;
+    
+    /* Bordures */
+    --color-border: #e2e8f0;
+    --color-border-focus: #2563eb;
+    
+    /* Espacements */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* Tailles de police */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    
+    /* Rayons de bordure */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-radius-xl: 1rem;
+    
+    /* Ombres */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Réinitialisation des marges et paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ========================================================================== */
+/* 2. STYLES DE BASE */
+/* ========================================================================== */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-text-main);
+    background-color: var(--color-bg-main);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typographie */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-main);
+}
+
+h1 {
+    font-size: var(--font-size-3xl);
+}
+
+h2 {
+    font-size: var(--font-size-2xl);
+}
+
+h3 {
+    font-size: var(--font-size-xl);
+}
+
+h4 {
+    font-size: var(--font-size-lg);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+/* ========================================================================== */
+/* 3. HEADER */
+/* ========================================================================== */
+
+.header {
+    background: linear-gradient(135deg, var(--color-bg-header) 0%, #334155 100%);
+    color: var(--color-text-light);
+    padding: var(--spacing-xl) var(--spacing-md);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.header-title {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.header-title .icon {
+    font-size: 2.5rem;
+}
+
+.header-subtitle {
+    font-size: var(--font-size-lg);
+    color: #cbd5e1;
+    margin-bottom: var(--spacing-sm);
+}
+
+.header-info {
+    font-size: var(--font-size-sm);
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* ========================================================================== */
+/* 4. CONTENEURS ET MISE EN PAGE */
+/* ========================================================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.main-content {
+    padding: var(--spacing-2xl) 0;
+    min-height: calc(100vh - 400px);
+}
+
+.card {
+    background: var(--color-bg-card);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+}
+
+.section-title {
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.subsection-title {
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+}
+
+.section-description {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-base);
+}
+
+/* ========================================================================== */
+/* 5. FORMULAIRES */
+/* ========================================================================== */
+
+.analysis-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--color-text-main);
+    font-size: var(--font-size-base);
+}
+
+.label-hint {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.form-control {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-bg-card);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-control::placeholder {
+    color: #94a3b8;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-control-inline {
+    width: auto;
+    min-width: 100px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-left: var(--spacing-sm);
+}
+
+.form-help {
+    display: block;
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Conteneur de quantités */
+.quantities-container {
+    padding: var(--spacing-md);
+    background-color: #f8fafc;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.quantity-input-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.quantity-input-group label {
+    flex: 1;
+    font-weight: 500;
+}
+
+.quantity-input-group input {
+    flex: 0 0 150px;
+}
+
+/* Contexte de laboratoire */
+.context-inputs {
+    padding: var(--spacing-md);
+    background-color: #f8fafc;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.input-group label {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Boutons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    border: none;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #475569;
+}
+
+.btn-icon {
+    font-size: var(--font-size-lg);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+/* Indicateur de chargement */
+.loading-indicator {
+    text-align: center;
+    padding: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto var(--spacing-md);
+    border: 4px solid var(--color-border);
+    border-top: 4px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ========================================================================== */
+/* 6. RÉSULTATS ET CARTES */
+/* ========================================================================== */
+
+.results-section {
+    animation: fadeIn 0.5s ease;
+}
+
+.result-summary {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border: 2px solid var(--color-border);
+}
+
+.global-score-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
+}
+
+.score-display {
+    text-align: center;
+}
+
+.score-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.score-value {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.score-max {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-xs);
+}
+
+.risk-level-container {
+    text-align: center;
+}
+
+.risk-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+}
+
+/* Badges de niveau de risque */
+.risk-badge {
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-md);
+}
+
+.risk-faible {
+    background-color: var(--color-risk-faible);
+    color: white;
+}
+
+.risk-moyen {
+    background-color: var(--color-risk-moyen);
+    color: white;
+}
+
+.risk-eleve {
+    background-color: var(--color-risk-eleve);
+    color: white;
+}
+
+.risk-unknown {
+    background-color: var(--color-secondary);
+    color: white;
+}
+
+.global-explanation {
+    padding: var(--spacing-lg);
+    background-color: white;
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--color-primary);
+    margin-top: var(--spacing-lg);
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+}
+
+/* Grille de catégories */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.category-card {
+    padding: var(--spacing-lg);
+    background-color: #f8fafc;
+    border-radius: var(--border-radius-md);
+    border: 2px solid var(--color-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.category-icon {
+    font-size: var(--font-size-2xl);
+}
+
+.category-title {
+    font-size: var(--font-size-lg);
+    margin: 0;
+}
+
+.category-score {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-main);
+}
+
+.score-number {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+}
+
+.category-explanation {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-top: var(--spacing-sm);
+}
+
+/* ========================================================================== */
+/* 7. SUBSTANCES ANALYSÉES */
+/* ========================================================================== */
+
+.substances-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.substance-item {
+    padding: var(--spacing-md);
+    background-color: #f8fafc;
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--color-primary);
+}
+
+.substance-name {
+    font-weight: 600;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-main);
+}
+
+.substance-cas {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.substance-quantity {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-style: italic;
+}
+
+.substance-details {
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-border);
+}
+
+.substance-detail-item {
+    font-size: var(--font-size-sm);
+    margin: var(--spacing-xs) 0;
+}
+
+/* ========================================================================== */
+/* 8. RECOMMANDATIONS ET LISTES */
+/* ========================================================================== */
+
+.recommendations-card {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 4px solid var(--color-success);
+}
+
+.recommendations-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recommendation-item {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background-color: white;
+    border-radius: var(--border-radius-md);
+    border-left: 3px solid var(--color-success);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    transition: transform 0.2s ease;
+}
+
+.recommendation-item:hover {
+    transform: translateX(4px);
+}
+
+.recommendation-icon {
+    font-size: var(--font-size-lg);
+    flex-shrink: 0;
+}
+
+.recommendation-text {
+    flex: 1;
+    line-height: 1.6;
+}
+
+/* Avertissements */
+.warnings-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid var(--color-warning);
+}
+
+.warnings-list {
+    list-style: none;
+    padding: 0;
+}
+
+.warning-item {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background-color: white;
+    border-radius: var(--border-radius-md);
+    border-left: 3px solid var(--color-warning);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+}
+
+.warning-icon {
+    font-size: var(--font-size-lg);
+    flex-shrink: 0;
+}
+
+/* ========================================================================== */
+/* 9. MESSAGES D'ERREUR */
+/* ========================================================================== */
+
+.error-section {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-left: 4px solid var(--color-danger);
+}
+
+.error-title {
+    color: var(--color-danger);
+}
+
+.error-message {
+    padding: var(--spacing-lg);
+    background-color: white;
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+/* ========================================================================== */
+/* 10. FOOTER */
+/* ========================================================================== */
+
+.footer {
+    background-color: var(--color-bg-footer);
+    color: #cbd5e1;
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+    margin-top: var(--spacing-2xl);
+}
+
+.footer-text {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.footer-disclaimer {
+    font-size: var(--font-size-xs);
+    color: #94a3b8;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius-md);
+}
+
+.footer-disclaimer strong {
+    color: var(--color-warning);
+}
+
+/* ========================================================================== */
+/* 11. ANIMATIONS ET TRANSITIONS */
+/* ========================================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease;
+}
+
+/* ========================================================================== */
+/* 12. RESPONSIVE DESIGN */
+/* ========================================================================== */
+
+/* Tablettes */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: var(--font-size-2xl);
+        flex-direction: column;
+    }
+    
+    .global-score-container {
+        flex-direction: column;
+    }
+    
+    .score-value {
+        font-size: 3rem;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .substances-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 480px) {
+    :root {
+        --font-size-base: 0.875rem;
+        --font-size-3xl: 1.5rem;
+    }
+    
+    .card {
+        padding: var(--spacing-md);
+    }
+    
+    .header {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .score-value {
+        font-size: 2.5rem;
+    }
+    
+    .risk-badge {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+/* Impression */
+@media print {
+    .header,
+    .footer,
+    .form-section,
+    .form-actions,
+    .btn {
+        display: none;
+    }
+    
+    .results-section {
+        box-shadow: none;
+    }
+    
+    .card {
+        page-break-inside: avoid;
+    }
+}

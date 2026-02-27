@@ -1,0 +1,41 @@
+cas;nom;scenario_exposition;probabilite;gravite;criticite;niveau_risque;mesures_collectives;mesures_organisationnelles;epi_recommandes;mesures_urgence
+
+67-64-1;Acétone;Nettoyage de verrerie / dégraissage avec volumes modérés et évaporation rapide;3;2;6;Modéré;Travail sous hotte ou zone ventilée, suppression sources d’ignition;Limiter quantités sur paillasse, refermer immédiatement, stockage armoire inflammables, formation solvants;Gants nitrile, lunettes, blouse;Déversement: absorber (inerte) + ventiler. Incendie: CO2/poudre. Yeux: rinçage 15 min.
+
+75-07-0;Acétaldéhyde;Transvasement et utilisation comme intermédiaire en synthèse organique (volatilité élevée);3;4;12;Élevé;Hotte obligatoire, captage à la source, contenants étanches;Procédure écrite, limiter temps d’exposition, éviter travail seul, étiquetage renforcé;Gants butyle/laminé, lunettes + écran facial si risque projection;Inhalation: évacuer/air frais + avis médical. Déversement: évacuer zone, absorber, déchets dangereux.
+
+64-19-7;Acide acétique;Préparation de solutions et ajustement de pH (acide concentré possible);3;3;9;Modéré;Hotte si concentré ou chauffage, poste lave-yeux disponible;Toujours verser l’acide dans l’eau, stockage séparé des bases/oxydants, quantités minimales;Gants nitrile/néoprène, lunettes, blouse;Contact: rinçage prolongé. Déversement: neutraliser (bicarbonate) puis absorber.
+
+7732-18-5;Eau;Manipulations usuelles (dilution, rinçage) avec risque principal de glissade;2;1;2;Faible;Gestion des sols (essuie-tout, bac), signalisation zone humide;Bonnes pratiques d’hygiène, éviter contamination croisée;Gants si eau contaminée;Déversement: assécher zone pour éviter chute.
+
+64-18-6;Acide formique;Transvasement/dilution d’acide avec émission possible de vapeurs irritantes;2;5;10;Élevé;Hotte, bac de rétention, douche/lave-yeux accessible;Procédure stricte de dilution, stockage acides, interdiction travail seul si concentré;Gants butyle/néoprène, lunettes + écran facial, tablier chimique;Contact: rinçage immédiat long + consultation. Déversement: neutralisation contrôlée puis absorption.
+
+67-63-0;Propan-2-ol;Désinfection et nettoyage en série (usage fréquent, évaporation);3;2;6;Modéré;Ventilation générale, éloigner sources d’ignition;Limiter volumes, fermeture flacons, stockage armoire inflammables;Gants nitrile, lunettes, blouse;Incendie: CO2/poudre. Inhalation: air frais.
+
+75-09-2;Chloroforme;Extraction liquide-liquide / préparation d’échantillons avec exposition aux vapeurs;3;4;12;Élevé;Hotte obligatoire, contenants fermés, collecte déchets halogénés;Substitution si possible, limiter quantités et durée, traçabilité des usages;Gants laminés/butyle, lunettes, blouse;Inhalation: air frais + avis médical si symptômes. Déversement: évacuer, absorber, élimination déchets halogénés.
+
+108-88-3;Toluène;Préparation de mélanges solvants / dissolution résines avec risques d’inhalation;3;4;12;Élevé;Hotte/captage, ventilation, mise à la terre si transvasement (anti-statique);Interdiction flamme/étincelles, quantités minimales, stockage inflammables;Gants nitrile, lunettes, blouse;Incendie: mousse/CO2/poudre. Déversement: absorber + ventiler.
+
+67-56-1;Méthanol;Préparation solutions et réactions (risque inhalation + ingestion accidentelle);3;5;15;Élevé;Hotte si usage régulier, ventilation, contenants sécurisés;Étiquetage clair “toxique”, pas de nourriture/boisson, formation toxicité;Gants nitrile, lunettes, blouse;Ingestion/inhalation: URGENCE médicale (risque vision). Déversement: absorber + ventiler.
+
+100-51-6;Benzyl alcool;Manipulation en formulation (faible volatilité, contact possible);2;2;4;Faible;Ventilation standard, éviter aérosols;Hygiène mains, refermer flacons, limiter chauffage;Gants nitrile, lunettes;Contact yeux: rinçage. Déversement: absorber.
+
+7664-93-9;Acide sulfurique;Dilution d’acide concentré / nettoyage acide (risque projection et aérosols);2;5;10;Élevé;Hotte, bac de rétention, douche/lave-yeux, écran de protection;Procédure “acide → eau”, travail à deux si concentré, stockage acides séparé;Gants butyle/néoprène, écran facial, tablier chimique;Projection: rinçage immédiat très long + URGENCE. Déversement: périmètre + neutralisation contrôlée.
+
+75-34-3;Acide phosphorique;Ajustement pH / détartrage (aérosols si agitation);2;3;6;Modéré;Ventilation/hotte si brouillard, bac de rétention;Procédure dilution, stockage séparé des bases;Gants nitrile/néoprène, lunettes;Contact: rinçage prolongé. Déversement: neutraliser puis absorber.
+
+108-95-2;Phénol;Réactif de synthèse avec risque majeur de contact cutané (absorption rapide);2;5;10;Élevé;Hotte obligatoire, poste de lavage immédiat, kit décontamination;Interdiction travail seul, quantités minimales, procédure accident peau;Gants laminés/butyle, écran facial, tablier;Contact peau: décontamination immédiate + URGENCE. Inhalation: air frais + avis médical.
+
+50-00-0;Formaldéhyde;Utilisation de solutions de formol / dégagement de vapeurs (sensibilisant, cancérogène);3;5;15;Élevé;Hotte/captage strict, systèmes fermés si possible;Substitution prioritaire, accès restreint, traçabilité + formation;Gants nitrile/butyle, lunettes, blouse, masque ABEK si nécessaire;Inhalation: évacuer + avis médical. Déversement: évacuer zone, absorption selon protocole.
+
+110-86-1;Pyridine;Solvant/base en synthèse (odeur forte, inhalation possible);2;3;6;Modéré;Hotte, contenants fermés;Limiter durée exposition, stockage ventilé, hygiène;Gants nitrile, lunettes, blouse;Inhalation: air frais. Déversement: absorber + ventiler.
+
+100-41-4;Éthylbenzène;Solvant aromatique en préparation (inflammable, inhalation);2;3;6;Modéré;Ventilation/hotte si usage prolongé, stockage inflammables;Éviter étincelles, quantités minimales, fermer flacons;Gants nitrile, lunettes, blouse;Incendie: mousse/CO2/poudre. Déversement: absorber.
+
+107-06-2;1,2-Dichloroéthane;Manipulation solvant chloré (toxicité systémique, exposition vapeurs);2;5;10;Élevé;Hotte obligatoire, contenants étanches, collecte déchets halogénés;Substitution prioritaire, limitation quantités, procédure écrite;Gants laminés/butyle, lunettes, blouse;Inhalation: air frais + avis médical. Déversement: évacuer, absorber, déchets halogénés.
+
+71-36-8;Butanol;Solvant en formulations (irritant, inflammable, exposition modérée);2;3;6;Modéré;Ventilation standard/hotte si chauffage, éloigner ignition;Limiter quantités, refermer flacons, stockage inflammables;Gants nitrile, lunettes, blouse;Incendie: CO2/poudre. Déversement: absorber + ventiler.
+
+98-86-0;Acétophénone;Manipulation en synthèse/parfumerie (faible à modérée volatilité);2;3;6;Modéré;Hotte si chauffage, ventilation;Procédure + limitation quantités;Gants nitrile, lunettes, blouse;Inhalation: air frais. Déversement: absorber.
+
+123-19-3;Cyclohexanone;Solvant polymères/résines (inflammable, inhalation prolongée possible);2;3;6;Modéré;Hotte/captage si usage prolongé, ventilation;Limiter durée et volumes, fermer contenants, stockage inflammables;Gants nitrile, lunettes, blouse;Déversement: absorber + ventiler. Incendie: CO2/poudre.

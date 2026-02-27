@@ -1,0 +1,50 @@
+#Chuyển từ “nguy hiểm” → rủi ro thực tế liên quan đến con người
+#cas: mã định danh quốc tế, dùng để liên kết dữ liệu giữa các file
+#nom: tên chất hoá học
+#vme_ppm: giá trị giới hạn phơi nhiễm nghề nghiệp tính theo
+#vme_mg_m3: giá trị giới hạn phơi nhiễm nghề nghiệp tính theo mg/m3
+#vme_court_terme: giá trị giới hạn phơi nhiễm nghề nghiệp ngắn hạn
+#commentaire_toxicologique: nhận xét về độc tính và các nguy cơ sức khoẻ
+
+cas;nom;vme_ppm;vme_mg_m3;vme_court_terme_ppm;organe_cible_principal;type_effets;voies_exposition;gravite_toxicologique;commentaire_toxicologique_professionnel
+
+67-64-1;Acétone;500;1210;1000;Système nerveux central;Narcotique;Inhalation;Faible à modérée;Solvant organique volatil pouvant entraîner somnolence, vertiges et irritation des voies respiratoires en cas d’exposition prolongée.
+
+75-07-0;Acétaldéhyde;25;45;50;Voies respiratoires;Irritant;Inhalation;Modérée;Aldéhyde réactif provoquant irritation oculaire et respiratoire avec risque de sensibilisation chronique.
+
+64-19-7;Acide acétique;10;25;15;Muqueuses respiratoires;Corrosif;Inhalation;Modérée;Vapeurs irritantes provoquant toux, brûlures légères et inconfort respiratoire en milieu confiné.
+
+7732-18-5;Eau;-1;-1;-1;Aucun;Non toxique;Aucune;Nulle;Substance non dangereuse dans des conditions normales d’utilisation.
+
+64-18-6;Acide formique;5;9;15;Voies respiratoires;Corrosif;Inhalation;Élevée;Exposition aiguë provoquant brûlures chimiques, irritation sévère et risque de lésions pulmonaires.
+
+67-63-0;Propan-2-ol;200;500;400;Système nerveux central;Narcotique léger;Inhalation;Faible;Solvant volatil provoquant irritation oculaire et effets sédatifs à forte concentration.
+
+75-09-2;Chloroforme;10;50;-1;Foie, reins;Hépatotoxique;Inhalation;Élevée;Solvant chloré pouvant entraîner dépression du système nerveux central et effets toxiques chroniques.
+
+108-88-3;Toluène;50;188;100;Système nerveux central;Neurotoxique;Inhalation;Modérée à élevée;Exposition prolongée associée à troubles cognitifs et effets neurologiques.
+
+67-56-1;Méthanol;200;260;250;Système nerveux, vision;Neurotoxique;Inhalation, ingestion;Élevée;Substance toxique pouvant provoquer cécité et acidose métabolique.
+
+100-51-6;Benzyl alcool;10;50;-1;Système nerveux;Irritant;Inhalation;Faible;Exposition prolongée pouvant provoquer fatigue et irritation respiratoire.
+
+7664-93-9;Acide sulfurique;-1;1;-1;Voies respiratoires;Corrosif;Inhalation;Très élevée;Aérosols fortement corrosifs causant brûlures pulmonaires et lésions irréversibles.
+
+75-34-3;Acide phosphorique;-1;10;-1;Muqueuses;Irritant;Inhalation;Modérée;Exposition prolongée entraînant irritation respiratoire.
+
+108-95-2;Phénol;5;19;10;Peau, système nerveux;Toxique systémique;Contact cutané;Élevée;Substance absorbée par la peau provoquant brûlures et effets neurotoxiques.
+
+50-00-0;Formaldéhyde;0.3;0.37;1;Voies respiratoires;Cancérogène;Inhalation;Très élevée;Gaz irritant sensibilisant classé cancérigène avec effets chroniques sévères.
+
+110-86-1;Pyridine;5;15;10;Système nerveux;Irritant;Inhalation;Modérée;Composé volatil provoquant maux de tête et effets narcotiques.
+
+100-41-4;Éthylbenzène;20;88;-1;Système nerveux;Neurotoxique;Inhalation;Modérée;Solvant aromatique pouvant affecter équilibre et coordination.
+
+107-06-2;1,2-Dichloroéthane;10;40;-1;Foie, reins;Toxique systémique;Inhalation;Élevée;Composé chloré suspecté cancérigène avec effets hépatiques.
+
+71-36-8;Butanol;50;153;-1;Système nerveux;Irritant;Inhalation;Modérée;Exposition prolongée entraînant somnolence et irritation respiratoire.
+
+98-86-0;Acétophénone;10;60;-1;Système nerveux;Narcotique;Inhalation;Modérée;Composé aromatique provoquant vertiges et somnolence.
+
+123-19-3;Cyclohexanone;25;100;-1;Système nerveux;Neurotoxique;Inhalation;Modérée;Solvant cyclique pouvant entraîner fatigue et effets neurologiques.
+

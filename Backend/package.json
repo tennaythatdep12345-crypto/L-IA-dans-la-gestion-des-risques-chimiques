@@ -1,0 +1,29 @@
+{
+  "name": "chemical-risk-assessment-api",
+  "version": "1.0.0",
+  "description": "API Gateway pour le système d'analyse des risques chimiques en laboratoire - Projet IUT Génie Chimique",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "chemical",
+    "risk",
+    "assessment",
+    "laboratory",
+    "safety",
+    "api",
+    "gateway"
+  ],
+  "author": "IUT Génie Chimique",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

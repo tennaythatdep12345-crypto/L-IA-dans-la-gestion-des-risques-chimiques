@@ -1,0 +1,257 @@
+# .gitignore
+# Projet: IA dans la gestion des risques chimiques en laboratoire de R&D
+# Exclut les fichiers inutiles ou sensibles du contrôle de version Git
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+
+# Répertoires de cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Fichiers compilés Python
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environnements virtuels Python
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Variables d'environnement et secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# Flask
+instance/
+.webassets-cache
+
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ============================================================================
+# NODE.JS / NPM
+# ============================================================================
+
+# Dépendances Node.js
+node_modules/
+jspm_packages/
+
+# Logs npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Fichiers de lock (optionnel - décommenter si souhaité)
+# package-lock.json
+# yarn.lock
+
+# Cache npm
+.npm
+
+# Cache Yarn
+.yarn-integrity
+
+# Fichiers de build
+dist/
+build/
+
+# ============================================================================
+# ÉDITEURS / IDE
+# ============================================================================
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains IDEs (PyCharm, WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================================================
+# SYSTÈMES D'EXPLOITATION
+# ============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# LOGS ET FICHIERS TEMPORAIRES
+# ============================================================================
+
+# Logs généraux
+*.log
+logs/
+*.log.*
+log/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+.tmp/
+tmp/
+
+# ============================================================================
+# DONNÉES ET OUTPUTS (optionnel)
+# ============================================================================
+
+# Décommenter si vous voulez exclure les fichiers de données CSV
+# data/*.csv
+# data/**/*.csv
+
+# Fichiers de sortie temporaires
+outputs/
+results/
+*.out
+
+# Fichiers de base de données locales
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================================================
+# TESTS ET COVERAGE
+# ============================================================================
+
+# Fichiers de test temporaires
+.pytest_cache/
+.coverage
+htmlcov/
+test-results/
+.tox/
+
+# ============================================================================
+# AUTRES
+# ============================================================================
+
+# Fichiers de configuration locale
+config.local.json
+settings.local.py
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+
+# Fichiers compressés (si générés automatiquement)
+*.zip
+*.tar.gz
+*.rar
+
+# Fichiers de documentation générée
+docs/_build/
+site/

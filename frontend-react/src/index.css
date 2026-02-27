@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --color-surface: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Light mode */
+body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+/* Dark mode */
+html.dark body {
+  @apply bg-slate-900 text-slate-100;
+}
+
+/* Smooth transition */
+* {
+  @apply transition-colors duration-300;
+}

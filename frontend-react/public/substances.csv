@@ -1,0 +1,72 @@
+cas;nom;nom_iupac;formule_chimique;masse_molaire_g_mol;classification_ghs;point_eclair_celsius;point_ebullition_celsius;niveau_risque_incendie;toxicite;etat_physique;densite;solubilite_eau;famille;voies_exposition;effets_sante;utilisations_courantes;conditions_stockage;description_professionnelle
+
+64-17-5;Éthanol;Éthanol;C2H6O;46.07;Flam. Liq. 2;13;78;Moyen;Faible;Liquide;0.789;Miscible;Alcool inflammable;Inhalation, ingestion, contact cutané;Irritation oculaire légère, sécheresse cutanée;Solvant industriel, désinfectant, carburant;Stocker en zone ventilée loin des sources d’ignition;Liquide volatil incolore largement utilisé comme solvant et agent antiseptique, présentant un risque d’inflammation modéré.
+
+67-64-1;Acétone;Propanone;C3H6O;58.08;Flam. Liq. 2;-18;56;Moyen;Faible;Liquide;0.784;Miscible;Cétone;Inhalation, contact oculaire;Irritation des voies respiratoires et des yeux;Solvant industriel, dégraissant;Conserver dans un récipient hermétique ventilé;Solvant organique très volatil avec un point éclair bas, nécessitant une manipulation sous hotte.
+
+75-07-0;Acétaldéhyde;Éthanal;C2H4O;44.05;Flam. Liq. 2;16;21;Élevé;Élevée;Liquide;0.784;Miscible;Aldéhyde;Inhalation, contact cutané;Irritations sévères, effets neurotoxiques;Synthèse chimique industrielle;Stockage réfrigéré recommandé;Composé hautement inflammable et toxique, utilisé comme intermédiaire chimique.
+
+64-19-7;Acide acétique;Acide éthanoïque;C2H4O2;60.05;Corr. Skin 1;39;118;Moyen;Modérée;Liquide;1.049;Miscible;Acide carboxylique;Contact cutané, inhalation;Brûlures cutanées et lésions oculaires;Industrie alimentaire et chimique;Conserver à l’écart des bases;Acide organique corrosif largement utilisé en synthèse et conservation.
+
+7732-18-5;Eau;Oxyde de dihydrogène;H2O;18.02;N/A;100;100;Faible;Nulle;Liquide;1.000;Miscible;Solvant universel;Aucune;Non toxique;Usage universel;Aucune restriction spécifique;Substance essentielle non dangereuse servant de référence pour les solvants.
+
+64-18-6;Acide formique;Acide méthanoïque;CH2O2;46.03;Corr. Skin 1;56;101;Élevé;Élevée;Liquide;1.22;Miscible;Acide carboxylique;Contact direct, inhalation;Brûlures graves;Industrie textile et chimique;Stockage en récipient résistant à la corrosion;Acide fort provoquant des lésions graves des tissus biologiques.
+
+67-63-0;Propan-2-ol;Isopropanol;C3H8O;60.10;Flam. Liq. 2;12;82;Moyen;Faible;Liquide;0.786;Miscible;Alcool secondaire;Inhalation, contact oculaire;Irritation modérée;Désinfectant, solvant;Stockage ventilé requis;Solvant inflammable couramment utilisé en nettoyage industriel.
+
+75-09-2;Chloroforme;Trichlorométhane;CHCl3;119.38;Carc. 2;61;61;Élevé;Élevée;Liquide;1.49;Peu soluble;Dérivé halogéné;Inhalation;Effets cancérigènes possibles;Solvant de laboratoire;Stockage à l’abri de la lumière;Composé volatil toxique nécessitant des précautions strictes.
+
+108-88-3;Toluène;Méthylbenzène;C7H8;92.14;Flam. Liq. 2;4;111;Élevé;Modérée;Liquide;0.867;Faible;Hydrocarbure aromatique;Inhalation prolongée;Effets neurologiques;Peintures, solvants;Stocker loin des flammes;Solvant aromatique avec potentiel neurotoxique.
+
+67-56-1;Méthanol;Alcool méthylique;CH4O;32.04;Flam. Liq. 2;11;65;Élevé;Élevée;Liquide;0.791;Miscible;Alcool toxique;Ingestion, inhalation;Cécité possible, toxicité sévère;Industrie chimique;Stockage sécurisé requis;Substance hautement toxique nécessitant manipulation experte.
+
+100-51-6;Benzyl alcool;Phénylméthanol;C7H8O;108.14;Flam. Liq. 3;96;205;Moyen;Faible;Liquide;1.04;Modérée;Alcool aromatique;Contact cutané;Irritation légère;Cosmétique, solvants;Stockage à température ambiante;Solvant organique à faible volatilité.
+
+7664-93-9;Acide sulfurique;Acide sulfurique;H2SO4;98.08;Corr. Skin 1;10;337;Élevé;Élevée;Liquide;1.84;Miscible;Acide minéral fort;Contact direct;Brûlures graves;Industrie chimique lourde;Stockage en cuves résistantes;Acide fortement corrosif largement utilisé industriellement.
+
+75-34-3;Acide phosphorique;Acide orthophosphorique;H3PO4;97.99;Corr. Skin 1;42;158;Moyen;Modérée;Liquide;1.88;Miscible;Acide minéral;Contact cutané;Irritation sévère;Engrais, industrie alimentaire;Stockage sécurisé;Acide modérément corrosif polyvalent.
+
+108-95-2;Phénol;Hydroxybenzène;C6H6O;94.11;Acute Tox. 3;43;182;Élevé;Élevée;Solide;1.07;Modérée;Phénol aromatique;Contact cutané;Toxicité systémique;Résines, synthèses;Manipulation sous hotte;Composé toxique nécessitant précautions avancées.
+
+50-00-0;Formaldéhyde;Méthanal;CH2O;30.03;Carc. 1B;19;-19;Élevé;Élevée;Gaz;0.815;Miscible;Aldéhyde gazeux;Inhalation;Irritation respiratoire sévère;Industrie des résines;Stockage sous pression contrôlée;Gaz toxique cancérigène utilisé en synthèse industrielle.
+
+7647-01-0;Acide chlorhydrique;Chlorure d'hydrogène en solution;HCl;36.46;Corr. Skin 1;N/A;110;Élevé;Élevée;Liquide;1.19;Miscible;Acide minéral;Inhalation, contact cutané;Brûlures graves et irritations respiratoires;Décapage des métaux, ajustement du pH;Récipients résistants à la corrosion;Acide fort volatil utilisé en traitement industriel et laboratoire.
+
+1310-73-2;Hydroxyde de sodium;Hydroxyde de sodium;NaOH;40.00;Corr. Skin 1;N/A;1388;Faible;Élevée;Solide;2.13;Très soluble;Base forte;Contact cutané;Brûlures chimiques sévères;Fabrication de savons, papier, neutralisation;Stockage à l’abri de l’humidité;Base alcaline fortement corrosive courante en procédés industriels.
+
+1310-58-3;Hydroxyde de potassium;Hydroxyde de potassium;KOH;56.11;Corr. Skin 1;N/A;1327;Faible;Élevée;Solide;2.04;Très soluble;Base forte;Contact direct;Lésions cutanées graves;Industrie chimique, électrochimie;Conserver hermétiquement;Base caustique utilisée en synthèse et production énergétique.
+
+7664-41-7;Ammoniaque;Azane;NH3;17.03;Skin Corr. 1;N/A;-33;Élevé;Modérée;Gaz;0.73;Très soluble;Base gazeuse;Inhalation;Irritations respiratoires sévères;Production d’engrais, réfrigération;Stockage sous pression;Gaz alcalin essentiel pour l’industrie chimique.
+
+7697-37-2;Acide nitrique;Acide nitrique;HNO3;63.01;Ox. Liq. 3;N/A;83;Élevé;Élevée;Liquide;1.51;Miscible;Acide oxydant;Contact, inhalation;Brûlures graves;Fabrication d’explosifs, fertilisants;Stockage isolé de matières organiques;Acide fortement oxydant utilisé en nitration industrielle.
+
+77-92-9;Acide citrique;Acide 2-hydroxypropane-1,2,3-tricarboxylique;C6H8O7;192.12;Eye Irrit. 2;N/A;310;Faible;Faible;Solide;1.66;Très soluble;Acide organique;Ingestion;Irritations légères;Industrie alimentaire et pharmaceutique;Stockage au sec;Acide biodégradable utilisé comme régulateur de pH.
+
+110-54-3;Hexane;Hexane;C6H14;86.18;Flam. Liq. 2;-22;69;Élevé;Modérée;Liquide;0.66;Faible;Hydrocarbure;Inhalation;Effets neurotoxiques;Extraction d’huiles, solvants;Stockage ventilé;Solvant non polaire hautement inflammable.
+
+60-29-7;Éther diéthylique;Éthoxyéthane;C4H10O;74.12;Flam. Liq. 1;-45;35;Très élevé;Modérée;Liquide;0.71;Faible;Éther;Inhalation;Vertiges, irritation;Synthèse organique;Zone anti-explosion;Solvant extrêmement volatil et inflammable.
+
+75-05-8;Acétonitrile;Acétonitrile;C2H3N;41.05;Flam. Liq. 2;2;82;Moyen;Modérée;Liquide;0.79;Miscible;Nitrile;Inhalation;Toxicité modérée;Chromatographie, synthèse;Stockage ventilé;Solvant polaire courant en analyse chimique.
+
+109-99-9;Tétrahydrofurane;Tétrahydrofurane;C4H8O;72.11;Flam. Liq. 2;-14;66;Élevé;Modérée;Liquide;0.89;Miscible;Éther cyclique;Inhalation;Irritations;Polymérisation, synthèse;Conserver stabilisé;Solvant organique volatil utilisé en polymères.
+
+68-12-2;Diméthylformamide;Diméthylformamide;C3H7NO;73.09;Repr. 1B;58;153;Moyen;Élevée;Liquide;0.94;Miscible;Amide;Contact cutané;Toxicité hépatique;Synthèse chimique;Stockage sécurisé;Solvant polaire puissant pour réactions complexes.
+
+67-68-5;Diméthylsulfoxyde;Diméthylsulfoxyde;C2H6OS;78.13;Eye Irrit. 2;95;189;Faible;Faible;Liquide;1.10;Miscible;Sulfoxyde;Contact cutané;Pénétration rapide cutanée;Solvant pharmaceutique;Stockage hermétique;Solvant hautement polaire largement utilisé.
+
+107-21-1;Éthylène glycol;Éthane-1,2-diol;C2H6O2;62.07;Acute Tox. 4;111;197;Faible;Élevée;Liquide;1.11;Miscible;Diol;Ingestion;Toxicité rénale;Antigel industriel;Stockage sécurisé;Agent cryoprotecteur toxique en cas d’ingestion.
+
+56-81-5;Glycérol;Propane-1,2,3-triol;C3H8O3;92.09;Non classé;160;290;Faible;Faible;Liquide;1.26;Miscible;Polyol;Contact cutané;Faible toxicité;Cosmétique, pharmacie;Stockage ambiant;Liquide visqueux biodégradable.
+
+71-43-2;Benzène;Benzène;C6H6;78.11;Carc. 1A;-11;80;Élevé;Élevée;Liquide;0.88;Faible;Hydrocarbure aromatique;Inhalation;Effets cancérigènes;Synthèse pétrochimique;Stockage sécurisé;Précurseur industriel toxique.
+
+1330-20-7;Xylène;Diméthylbenzène;C8H10;106.16;Flam. Liq. 3;25;138;Moyen;Modérée;Liquide;0.87;Faible;Aromatique;Inhalation;Effets neurologiques;Solvant peintures;Stockage ventilé;Solvant aromatique courant.
+
+7722-84-1;Peroxyde d’hydrogène;Peroxyde d’hydrogène;H2O2;34.01;Ox. Liq. 1;N/A;150;Élevé;Modérée;Liquide;1.45;Miscible;Peroxyde;Contact cutané;Irritation;Désinfection industrielle;Stockage sombre;Agent oxydant puissant.
+
+10043-01-3;Sulfate d’aluminium;Sulfate d’aluminium;Al2(SO4)3;342.15;Eye Irrit. 2;N/A;Décomp.;Faible;Faible;Solide;2.71;Soluble;Sel minéral;Contact cutané;Irritations;Traitement des eaux;Stockage sec;Coagulant industriel utilisé en purification.
+7681-52-9;Eau de Javel;Hypochlorite de sodium;NaClO;74.44;Corr. Skin 1;N/A;Décomp.;Faible;Élevée;Liquide;1.21;Soluble;Oxydant chloré;Inhalation, contact cutané;Irritation respiratoire et cutanée;Désinfection, blanchiment;Conserver au frais à l'abri de la lumière;Solution aqueuse d'hypochlorite de sodium utilisée comme désinfectant et agent de blanchiment.
+
+1336-21-6;Ammoniac;Ammoniaque;NH3;17.03;Corr. Skin 1;N/A;-33;Faible;Élevée;Gaz;0.771;Très soluble;Base azotée;Inhalation, contact oculaire;Brûlures chimiques, œdème pulmonaire;Industrie chimique, nettoyage;Stockage sous pression, zones ventilées;Gaz alcalin toxique provoquant brûlures sévères des voies respiratoires et des muqueuses.
+
+7722-84-1;Eau oxygénée;Peroxyde d'hydrogène;H2O2;34.01;Ox. Liq. 1;N/A;150;Élevé;Modérée;Liquide;1.45;Miscible;Peroxyde;Contact cutané;Irritation, brûlures;Désinfection, blanchiment des cheveux;Stockage sombre et frais;Solution oxydante couramment utilisée comme antiseptique et agent de blanchiment.

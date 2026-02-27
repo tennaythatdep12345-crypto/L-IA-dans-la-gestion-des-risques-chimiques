@@ -1,0 +1,25 @@
+{
+  "scan_metadata": {
+    "tool": "aegis-sast",
+    "version": "1.0.0",
+    "timestamp": "2026-02-07T16:17:47.189879",
+    "target": "test_reaction_rate.py",
+    "duration_seconds": 0.0,
+    "files_scanned": 1
+  },
+  "findings": [],
+  "summary": {
+    "target": "test_reaction_rate.py",
+    "duration_seconds": 0.0,
+    "files_scanned": 1,
+    "total_vulnerabilities": 0,
+    "by_severity": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    },
+    "errors": []
+  },
+  "errors": []
+}
