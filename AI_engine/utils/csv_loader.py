@@ -85,6 +85,7 @@ def load_substances(filepath=None):
                     'nom_normalise': nom_normalise,
                     'point_eclair': point_eclair,
                     'toxicite': toxicite_str,  # Use actual toxicity level from CSV
+                    'classification_ghs': classification,  # GHS classification (Carc, Repr, etc.)
                     'famille': classification,
                     'categorie': classification, 
                 }

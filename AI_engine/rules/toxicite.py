@@ -90,6 +90,16 @@ def evaluate_toxicity(substance_data):
                           f"niveau par défaut ({DEFAULT_TOXICITY_LEVEL}) appliqué."
         }
     
+    # ============================================================
+    # UPGRADE CMR: Si GHS contient Carc/Repr/Muta → TRES_TOXIQUE
+    # (prend priorité sur le champ toxicite générique)
+    # ============================================================
+    ghs_raw = str(substance_data.get('classification_ghs', '')).lower()
+    is_cmr = any(marker in ghs_raw for marker in ['carc.', 'repr.', 'muta.', 'carc ', 'repr ', 'muta '])
+    if is_cmr and score < TOXICITY_SCORES['TRES_TOXIQUE']:
+        matched_level = 'TRES_TOXIQUE'
+        score = TOXICITY_SCORES['TRES_TOXIQUE']
+    
     # Génération de l'explication selon le niveau
     explication = _generate_toxicity_explanation(substance_name, matched_level, score)
     
@@ -114,11 +124,11 @@ def _fuzzy_match_toxicity(toxicity_normalized):
     """
     # Mapping des variantes courantes - IMPORTANT: exact matches en premier
     fuzzy_mappings = {
-        'NON_TOXIQUE': ['NONTOXIQUE', 'NON_TOXIQUE', 'AUCUNE', 'AUCUN', 'NULLE'],
+        'NON_TOXIQUE': ['NONTOXIQUE', 'NON_TOXIQUE', 'AUCUNE', 'AUCUN', 'NULLE', 'NULLE_', 'NON'],
         'PEU_TOXIQUE': ['PEUTOXIQUE', 'PEU_TOXIQUE', 'FAIBLE', 'FAIBLETOXICITE'],
         'IRRITANT': ['IRRITANT', 'IRRITATION'],
-        'NOCIF': ['NOCIF', 'NUISIBLE', 'TOXICITEMODERE', 'MODEREE'],
-        'TOXIQUE': ['TOXIQUE', 'CORROSIF', 'TOXICITEELEVEE'],
+        'NOCIF': ['NOCIF', 'NUISIBLE', 'TOXICITEMODERE', 'MODEREE', 'MODERE', 'MOYENNE', 'MOYEN'],
+        'TOXIQUE': ['TOXIQUE', 'CORROSIF', 'TOXICITEELEVEE', 'ELEVEE', 'ELEVE', 'HAUTE', 'HAUT'],
         'TRES_TOXIQUE': ['TRES_TOXIQUE', 'TRESTOXIQUE', 'CMR', 'CANCEROGENE', 'MUTAGENE', 'REPROTOXIQUE'],
     }
     

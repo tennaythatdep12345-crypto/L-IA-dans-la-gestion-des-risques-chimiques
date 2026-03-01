@@ -11,16 +11,10 @@ NOUVELLE LOGIQUE (février 2026):
 5. Conditions de laboratoire = modifications partielles, pas élimination du risque
 """
 
-from config.settings import RISK_LEVEL_THRESHOLDS, SCORE_DECIMAL_PLACES
+from config.settings import RISK_LEVEL_THRESHOLDS, SCORE_DECIMAL_PLACES, CATEGORY_WEIGHTS
 
-# ============================================
-# POIDS HSE - Révisés selon importance
-# ============================================
-HSE_WEIGHTS = {
-    'inflammabilite': 0.20,   # 20% - Important mais moins critique
-    'toxicite': 0.35,        # 35% - Priorité moyenne
-    'incompatibilite': 0.45   # 45% - Réactions = plus dangereux
-}
+# POIDS: importés depuis config/settings.py (source unique de vérité)
+# inflammabilite: 0.35 | toxicite: 0.40 | incompatibilites: 0.25
 
 def calculate_global_risk_score(individual_scores, is_dangerous_reaction_detected=False):
     """
@@ -43,19 +37,36 @@ def calculate_global_risk_score(individual_scores, is_dangerous_reaction_detecte
     
     # LOGIQUE CRITIQUE: Si réaction dangereuse connue → lockdown incompatibilité
     if is_dangerous_reaction_detected:
-        incompatibilite = 50  # VERROUILLÉ AU MAXIMUM
-        toxicite = max(toxicite, 40)  # Booster toxicité des produits
-        print("[RISK_SCORE DEBUG] DANGEROUS REACTION DETECTED - Incompatibility LOCKED at 50")
+        incompatibilite = 100  # VERROUILLÉ AU MAXIMUM
+        toxicite = max(toxicite, 50)  # Booster toxicité des produits
+        print("[RISK_SCORE DEBUG] DANGEROUS REACTION DETECTED - Incompatibility LOCKED at 100")
     
     # ============================================
-    # ÉTAPE 1: Agrégation pondérée (avant env)
+    # ÉTAPE 1: Agrégation pondérée ADAPTATIVE
     # ============================================
-    # Somme pondérée: 0-50 (chaque score × poids)
-    base_score = (
-        inflammabilite * HSE_WEIGHTS['inflammabilite'] +
-        toxicite * HSE_WEIGHTS['toxicite'] +
-        incompatibilite * HSE_WEIGHTS['incompatibilite']
-    )
+    # Si incompatibilité = 0 (substance seule), on normalise les poids
+    # entre inflammabilité et toxicité uniquement pour ne pas pénaliser
+    # les substances dangereuses sans association.
+    if incompatibilite == 0 and not is_dangerous_reaction_detected:
+        # Poids normalisés sans la catégorie incompatibilités
+        w_inflam = CATEGORY_WEIGHTS['inflammabilite']  # 0.35
+        w_tox = CATEGORY_WEIGHTS['toxicite']            # 0.40
+        total_w = w_inflam + w_tox                       # 0.75
+        base_score = (
+            inflammabilite * (w_inflam / total_w) +
+            toxicite * (w_tox / total_w)
+        )
+        # Seuil minimum: substance très toxique (score >= 70) = au moins MOYEN
+        # 47 × 0.85 (ventilation) = 40 = seuil MOYEN
+        if toxicite >= 70:
+            base_score = max(base_score, 47)
+    else:
+        # Plusieurs substances avec incompatibilités: formule complète pondérée
+        base_score = (
+            inflammabilite * CATEGORY_WEIGHTS['inflammabilite'] +
+            toxicite * CATEGORY_WEIGHTS['toxicite'] +
+            incompatibilite * CATEGORY_WEIGHTS['incompatibilites']
+        )
     
     # Cap à 100 avant ajustements environnementaux
     base_score = min(100, base_score)
@@ -81,12 +92,12 @@ def calculate_global_risk_score(individual_scores, is_dangerous_reaction_detecte
             'incompatibilites': incompatibilite
         },
         'scores_ponderes': {
-            'inflammabilite': round(inflammabilite * HSE_WEIGHTS['inflammabilite'], 2),
-            'toxicite': round(toxicite * HSE_WEIGHTS['toxicite'], 2),
-            'incompatibilites': round(incompatibilite * HSE_WEIGHTS['incompatibilite'], 2)
+            'inflammabilite': round(inflammabilite * CATEGORY_WEIGHTS['inflammabilite'], 2),
+            'toxicite': round(toxicite * CATEGORY_WEIGHTS['toxicite'], 2),
+            'incompatibilites': round(incompatibilite * CATEGORY_WEIGHTS['incompatibilites'], 2)
         },
         'explication': explication,
-        'poids_utilises': HSE_WEIGHTS.copy()
+        'poids_utilises': CATEGORY_WEIGHTS.copy()
     }
 
 
@@ -169,19 +180,19 @@ def _generate_global_explanation(global_score, risk_level, inflam_score, tox_sco
     
     # Construction de l'explication selon le niveau de risque
     if risk_level == 'ELEVE':
-        explication = f"🔴 RISQUE ÉLEVÉ (score global: {global_score}/50). "
+        explication = f"🔴 RISQUE ÉLEVÉ (score global: {global_score}/100). "
         explication += f"Le risque principal est lié à la {main_risk} (score: {main_risk_score}). "
         explication += "Manipulation INTERDITE sans formation spécifique et EPI complets. "
         explication += "Consulter impérativement la FDS et un responsable sécurité."
     
     elif risk_level == 'MOYEN':
-        explication = f"🟠 RISQUE MOYEN (score global: {global_score}/50). "
+        explication = f"🟠 RISQUE MOYEN (score global: {global_score}/100). "
         explication += f"Le risque principal est lié à la {main_risk} (score: {main_risk_score}). "
         explication += "Manipulation avec précautions renforcées requises. "
         explication += "Port des EPI obligatoire et travail sous hotte recommandé."
     
     else:
-        explication = f"🟢 RISQUE FAIBLE (score global: {global_score}/50). "
+        explication = f"🟢 RISQUE FAIBLE (score global: {global_score}/100). "
         explication += "Les risques identifiés sont limités. "
         explication += "Respecter les bonnes pratiques de laboratoire standard."
     
