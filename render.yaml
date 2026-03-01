@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: chemical-risk-backend
+    runtime: node
+    rootDir: Backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FLASK_URL
+        sync: false   # À remplir manuellement dans le dashboard Render
+      - key: ALLOWED_ORIGINS
+        sync: false   # Ex: https://your-frontend.vercel.app

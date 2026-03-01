@@ -35,9 +35,12 @@ const FLASK_TIMEOUT = 30000; // 30 secondes
 // ============================================================================
 
 // CORS: Permet les requêtes cross-origin depuis le frontend
-// En production, remplacer '*' par l'URL spécifique du frontend
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',')
+    : '*';
+
 app.use(cors({
-    origin: '*', // En développement: accepter toutes les origines
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));

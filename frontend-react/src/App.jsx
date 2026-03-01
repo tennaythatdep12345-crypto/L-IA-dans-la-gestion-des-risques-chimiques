@@ -265,7 +265,8 @@ function App() {
       console.log("🚀 Envoi au backend:", requestData);
 
       // Call backend API
-      const response = await fetch('http://localhost:3000/analyze', {
+      const backendUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const response = await fetch(`${backendUrl}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
