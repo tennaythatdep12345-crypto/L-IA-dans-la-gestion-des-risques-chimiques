@@ -315,12 +315,12 @@ app.use((err, req, res, next) => {
 // DÉMARRAGE DU SERVEUR
 // ============================================================================
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log('='.repeat(70));
     console.log('Serveur Node.js - Passerelle API pour Gestion des Risques Chimiques');
     console.log('='.repeat(70));
     console.log(`✓ Serveur démarré sur le port ${PORT}`);
-    console.log(`✓ URL du serveur: http://localhost:${PORT}`);
+    console.log(`✓ URL du serveur: http://0.0.0.0:${PORT}`);
     console.log(`✓ URL du moteur IA Flask: ${FLASK_AI_ENGINE_URL}`);
     console.log('');
     console.log('Routes disponibles:');
