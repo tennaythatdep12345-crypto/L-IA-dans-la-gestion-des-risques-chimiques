@@ -23,7 +23,9 @@
  */
 const API_CONFIG = {
     // URL de base (détectée automatiquement selon l'environnement)
-    BASE_URL: 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com',
+    BASE_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:3000'
+        : 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com',
     
     // Endpoints disponibles
     ENDPOINTS: {

@@ -18,7 +18,9 @@
  * URL de base de l'API backend
  * Peut être modifiée pour pointer vers un serveur distant
  */
-const API_BASE_URL = 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com';
+const API_BASE_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000'
+    : 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com';
 
 const ANALYZE_ENDPOINT = `${API_BASE_URL}/analyze`;
 

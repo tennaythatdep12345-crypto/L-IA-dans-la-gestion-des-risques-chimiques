@@ -265,7 +265,9 @@ function App() {
       console.log("🚀 Envoi au backend:", requestData);
 
       // Call backend API
-      const backendUrl = 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com';
+      const backendUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3000'
+        : 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com';
       const response = await fetch(`${backendUrl}/analyze`, {
         method: 'POST',
         headers: {
