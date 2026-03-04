@@ -189,9 +189,9 @@ if __name__ == '__main__':
     logger.info("Port: 5000")
     logger.info("Endpoint: POST /analyze")
     
-    # Lancement de l'application en mode développement
+    # Lancement de l'application
     app.run(
-        host='127.0.0.1',
+        host='0.0.0.0',
         port=5000,
-        debug=True
+        debug=False
     )

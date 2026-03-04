@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: chemical-risk-ai-engine
+    runtime: python
+    rootDir: AI_engine
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_PORT
+        value: 5000
