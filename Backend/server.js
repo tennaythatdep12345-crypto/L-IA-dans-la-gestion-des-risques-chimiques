@@ -44,7 +44,10 @@ app.use(cors({
         // Allow requests with no origin (like mobile apps, curl requests)
         if (!origin) return callback(null, true);
         
-        if (allowedOrigins.indexOf(origin) !== -1) {
+        const isAllowed = allowedOrigins.indexOf(origin) !== -1;
+        console.log(`[CORS] Check origin: "${origin}", Allowed: ${isAllowed}, List: ${JSON.stringify(allowedOrigins)}`);
+        
+        if (isAllowed) {
             callback(null, true);
         } else {
             callback(new Error(`CORS not allowed for origin: ${origin}`));
@@ -58,6 +61,7 @@ app.use(cors({
 }));
 
 console.log(`[CORS] Production: ${process.env.NODE_ENV === 'production'}`);
+console.log(`[CORS] Raw ALLOWED_ORIGINS env:`, JSON.stringify(process.env.ALLOWED_ORIGINS));
 console.log(`[CORS] Allowed origins:`, allowedOrigins);
 
 // Parser le JSON dans le body des requêtes
