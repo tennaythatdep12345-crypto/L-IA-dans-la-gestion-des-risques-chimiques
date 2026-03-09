@@ -36,11 +36,7 @@ const FLASK_TIMEOUT = 30000; // 30 secondes
 
 // CORS: Permet les requêtes cross-origin depuis le frontend
 const allowedOrigins = process.env.NODE_ENV === 'production' 
-  ? [
-      'https://l-ia-dans-la-gestion-des-risques.vercel.app',
-      'https://votre-frontend.vercel.app',
-      ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()) : [])
-    ]
+  ? (process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()) : [])
   : ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:5173'];
 
 app.use(cors({
@@ -48,7 +44,7 @@ app.use(cors({
         // Allow requests with no origin (like mobile apps, curl requests)
         if (!origin) return callback(null, true);
         
-        if (allowedOrigins.indexOf(origin) !== -1 || !process.env.ALLOWED_ORIGINS) {
+        if (allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
             callback(new Error(`CORS not allowed for origin: ${origin}`));
