@@ -8,7 +8,6 @@ import logging
 import json
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from services.analyzer import analyze_risk
 
 # Configuration du logging
 logging.basicConfig(
@@ -22,6 +21,16 @@ app = Flask(__name__)
 
 # Activation de CORS (Cross-Origin Resource Sharing)
 CORS(app)
+
+# Import des services APRÈS création de l'app pour mieux gérer les erreurs
+try:
+    from services.analyzer import analyze_risk
+    logger.info("✓ Service analyzer chargé avec succès")
+except Exception as e:
+    logger.error(f"✗ ERREUR lors du chargement du service analyzer: {str(e)}")
+    logger.error(f"  Type: {type(e).__name__}")
+    import traceback
+    logger.error(traceback.format_exc())
 
 
 @app.route('/analyze', methods=['POST'])
