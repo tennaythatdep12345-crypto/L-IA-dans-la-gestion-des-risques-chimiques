@@ -1,0 +1,364 @@
+{
+  "chemicals": {
+    "benzene": {
+      "cas": "71-43-2",
+      "name": "Benzene",
+      "synonyms": ["benzol", "phenyl hydride"],
+      "molecularFormula": "C6H6",
+      "carcinogenicity": "high",
+      "mutagenicity": "medium",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "medium",
+      "exposureRoutes": ["inhalation", "skin"],
+      "targetOrgans": ["blood", "bone marrow", "nervous system"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress", "chromosomal alteration"],
+      "summary": {
+        "en": "Benzene is a known human carcinogen (Group 1) associated with high carcinogenic risk, especially through chronic inhalation exposure. It can cause blood disorders and leukemia.",
+        "fr": "Le benzène est un cancérogène humain avéré (Groupe 1) associé à un risque cancérogène élevé, en particulier par exposition à l'inhalation chronique. Il peut causer des troubles sanguins et la leucémie."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "formaldehyde": {
+      "cas": "50-00-0",
+      "name": "Formaldehyde",
+      "synonyms": ["methanal", "formalin"],
+      "molecularFormula": "CH2O",
+      "carcinogenicity": "high",
+      "mutagenicity": "medium",
+      "genotoxicity": "high",
+      "chronicToxicity": "medium",
+      "reproductiveToxicity": "low",
+      "exposureRoutes": ["inhalation", "skin"],
+      "targetOrgans": ["respiratory system", "nasopharynx"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress"],
+      "summary": {
+        "en": "Formaldehyde is a known human carcinogen (Group 1) associated with nasopharyngeal cancer. Chronic inhalation exposure presents significant respiratory and carcinogenic health risks.",
+        "fr": "Le formaldéhyde est un cancérogène humain avéré (Groupe 1) associé au cancer du nasopharynx. L'exposition à l'inhalation chronique présente des risques sanitaires respiratoires et cancérogènes importants."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "chloroform": {
+      "cas": "67-66-3",
+      "name": "Chloroform",
+      "synonyms": ["trichloromethane", "methyl chloroform"],
+      "molecularFormula": "CHCl3",
+      "carcinogenicity": "medium",
+      "mutagenicity": "low",
+      "genotoxicity": "medium",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "medium",
+      "exposureRoutes": ["inhalation", "skin", "ingestion"],
+      "targetOrgans": ["liver", "kidney", "nervous system"],
+      "classification": "Group 2B (IARC)",
+      "mechanisms": ["oxidative stress", "genomic instability"],
+      "summary": {
+        "en": "Chloroform is a possible human carcinogen (Group 2B) presenting moderate health concerns. Chronic exposure carries risks of liver and kidney damage, with potential carcinogenic effects.",
+        "fr": "Le chloroforme est un cancérogène humain possible (Groupe 2B) présentant des préoccupations sanitaires modérées. L'exposition chronique comporte des risques de dommages hépatiques et rénaux, avec des effets cancérogènes potentiels."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "asbestos": {
+      "cas": "1332-21-4",
+      "name": "Asbestos",
+      "synonyms": ["white asbestos", "chrysotile"],
+      "molecularFormula": "Mg3Si2O5(OH)4",
+      "carcinogenicity": "high",
+      "mutagenicity": "low",
+      "genotoxicity": "medium",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "low",
+      "exposureRoutes": ["inhalation"],
+      "targetOrgans": ["lungs", "pleura", "peritoneum"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "chromosomal alteration", "oxidative stress"],
+      "summary": {
+        "en": "Asbestos is a known human carcinogen (Group 1) with extremely high health risks. Inhalation exposure causes mesothelioma, lung cancer, and asbestosis with long latency periods.",
+        "fr": "L'amiante est un cancérogène humain avéré (Groupe 1) présentant des risques sanitaires extrêmement élevés. L'exposition à l'inhalation cause le mésothéliome, le cancer du poumon et l'asbestose avec des périodes de latence longues."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "cadmium": {
+      "cas": "7440-43-9",
+      "name": "Cadmium",
+      "synonyms": ["cadmium metal"],
+      "molecularFormula": "Cd",
+      "carcinogenicity": "high",
+      "mutagenicity": "medium",
+      "genotoxicity": "medium",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "high",
+      "exposureRoutes": ["inhalation", "ingestion"],
+      "targetOrgans": ["kidneys", "lungs", "liver"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress", "anti-apoptotic effects"],
+      "summary": {
+        "en": "Cadmium is a known human carcinogen (Group 1) with severe toxic effects on kidneys and lungs. Chronic exposure causes kidney damage and increases cancer risk, particularly lung cancer.",
+        "fr": "Le cadmium est un cancérogène humain avéré (Groupe 1) ayant des effets toxiques graves sur les reins et les poumons. L'exposition chronique cause des dommages rénaux et augmente le risque de cancer, en particulier le cancer du poumon."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "acrylamide": {
+      "cas": "79-06-1",
+      "name": "Acrylamide",
+      "synonyms": ["acrylic amide", "2-propenamide"],
+      "molecularFormula": "C3H5NO",
+      "carcinogenicity": "high",
+      "mutagenicity": "high",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "high",
+      "exposureRoutes": ["skin", "ingestion", "inhalation"],
+      "targetOrgans": ["nervous system", "reproductive organs"],
+      "classification": "Group 2A (IARC)",
+      "mechanisms": ["DNA damage", "neurological damage"],
+      "summary": {
+        "en": "Acrylamide is a probable human carcinogen (Group 2A) with demonstrated mutagenic and neurotoxic effects. Exposure poses risks to the nervous system and reproductive health.",
+        "fr": "L'acrylamide est un cancérogène humain probable (Groupe 2A) ayant des effets mutagènes et neurotoxiques démontrés. L'exposition pose des risques pour le système nerveux et la santé reproductive."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "benzo[a]pyrene": {
+      "cas": "50-32-8",
+      "name": "Benzo[a]pyrene",
+      "synonyms": ["BAP", "3,4-benzpyrene"],
+      "molecularFormula": "C20H12",
+      "carcinogenicity": "high",
+      "mutagenicity": "high",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "medium",
+      "exposureRoutes": ["inhalation", "skin"],
+      "targetOrgans": ["lungs", "skin"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "chromosomal alteration"],
+      "summary": {
+        "en": "Benzo[a]pyrene is a known human carcinogen (Group 1) found in pollutants. It poses significant cancer risks through both inhalation and skin exposure routes.",
+        "fr": "Le benzo[a]pyrène est un cancérogène humain avéré (Groupe 1) trouvé dans les polluants. Il pose des risques de cancer importants par les voies d'exposition à l'inhalation et cutanée."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "vinyl chloride": {
+      "cas": "75-01-4",
+      "name": "Vinyl Chloride",
+      "synonyms": ["VCM", "chloroethene"],
+      "molecularFormula": "C2H3Cl",
+      "carcinogenicity": "high",
+      "mutagenicity": "medium",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "medium",
+      "exposureRoutes": ["inhalation"],
+      "targetOrgans": ["liver", "lungs", "nervous system"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "chromosomal alteration"],
+      "summary": {
+        "en": "Vinyl chloride is a known human carcinogen (Group 1) causing liver angiosarcoma and other cancers. Chronic inhalation exposure presents severe occupational health risks.",
+        "fr": "Le chlorure de vinyle est un cancérogène humain avéré (Groupe 1) causant l'angiosarcome hépatique et d'autres cancers. L'exposition à l'inhalation chronique présente des risques professionnels graves pour la santé."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "hexavalent chromium": {
+      "cas": "18540-29-9",
+      "name": "Hexavalent Chromium",
+      "synonyms": ["Cr(VI)", "chromate"],
+      "molecularFormula": "CrO4",
+      "carcinogenicity": "high",
+      "mutagenicity": "high",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "medium",
+      "exposureRoutes": ["inhalation", "skin"],
+      "targetOrgans": ["lungs", "respiratory system"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress"],
+      "summary": {
+        "en": "Hexavalent chromium is a known human carcinogen (Group 1) causing lung cancer and respiratory disease. Both inhalation and skin contact pose significant health risks.",
+        "fr": "Le chrome hexavalent est un cancérogène humain avéré (Groupe 1) causant le cancer du poumon et les maladies respiratoires. L'inhalation et le contact cutané posent tous deux des risques sanitaires importants."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "nickel": {
+      "cas": "7440-02-0",
+      "name": "Nickel",
+      "synonyms": ["nickel metal"],
+      "molecularFormula": "Ni",
+      "carcinogenicity": "high",
+      "mutagenicity": "low",
+      "genotoxicity": "medium",
+      "chronicToxicity": "medium",
+      "reproductiveToxicity": "low",
+      "exposureRoutes": ["inhalation", "skin"],
+      "targetOrgans": ["lungs", "nose", "skin"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress"],
+      "summary": {
+        "en": "Nickel is a known human carcinogen (Group 1) associated with lung and nasal cancer in occupational exposure. Inhalation of nickel compounds presents the greatest risk.",
+        "fr": "Le nickel est un cancérogène humain avéré (Groupe 1) associé au cancer du poumon et des fosses nasales lors d'exposition professionnelle. L'inhalation de composés de nickel présente le plus grand risque."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "dibenzo[a,h]anthracene": {
+      "cas": "53-70-3",
+      "name": "Dibenzo[a,h]anthracene",
+      "synonyms": ["DBA", "dibenz[a,h]anthracene"],
+      "molecularFormula": "C26H16",
+      "carcinogenicity": "high",
+      "mutagenicity": "high",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "low",
+      "exposureRoutes": ["inhalation", "skin"],
+      "targetOrgans": ["lungs", "skin"],
+      "classification": "Group 2A (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress"],
+      "summary": {
+        "en": "Dibenzo[a,h]anthracene is a probable human carcinogen (Group 2A) with strong mutagenic properties. Exposure through inhalation or skin contact carries significant cancer risk.",
+        "fr": "Le dibenzo[a,h]anthracène est un cancérogène humain probable (Groupe 2A) avec des propriétés mutagènes fortes. L'exposition par inhalation ou contact cutané entraîne un risque de cancer important."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "environmental tobacco smoke": {
+      "cas": "unknown",
+      "name": "Environmental Tobacco Smoke",
+      "synonyms": ["second-hand smoke", "passive smoking"],
+      "molecularFormula": "mixture",
+      "carcinogenicity": "high",
+      "mutagenicity": "medium",
+      "genotoxicity": "medium",
+      "chronicToxicity": "medium",
+      "reproductiveToxicity": "medium",
+      "exposureRoutes": ["inhalation"],
+      "targetOrgans": ["lungs", "heart"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress"],
+      "summary": {
+        "en": "Environmental tobacco smoke is a known human carcinogen (Group 1) causing lung cancer and cardiovascular disease. Chronic inhalation exposure poses significant health risks.",
+        "fr": "La fumée de tabac environnementale est un cancérogène humain avéré (Groupe 1) causant le cancer du poumon et les maladies cardiovasculaires. L'exposition à l'inhalation chronique pose des risques sanitaires importants."
+      },
+      "source": ["IARC"]
+    },
+    "aflatoxin B1": {
+      "cas": "1162-65-8",
+      "name": "Aflatoxin B1",
+      "synonyms": ["AFB1"],
+      "molecularFormula": "C17H12O6",
+      "carcinogenicity": "high",
+      "mutagenicity": "high",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "medium",
+      "exposureRoutes": ["ingestion"],
+      "targetOrgans": ["liver"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "chromosomal alteration"],
+      "summary": {
+        "en": "Aflatoxin B1 is a known human carcinogen (Group 1) naturally produced by molds. Ingestion poses extremely high liver cancer risk, particularly in hepatitis B carriers.",
+        "fr": "L'aflatoxine B1 est un cancérogène humain avéré (Groupe 1) produit naturellement par les moisissures. L'ingestion pose un risque extrêmement élevé de cancer du foie, en particulier chez les porteurs de l'hépatite B."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "ethylene oxide": {
+      "cas": "75-21-8",
+      "name": "Ethylene Oxide",
+      "synonyms": ["oxirane", "ethylene oxidey"],
+      "molecularFormula": "C2H4O",
+      "carcinogenicity": "high",
+      "mutagenicity": "high",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "high",
+      "exposureRoutes": ["inhalation"],
+      "targetOrgans": ["nervous system", "reproductive organs"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "neurotoxic effects"],
+      "summary": {
+        "en": "Ethylene oxide is a known human carcinogen (Group 1) with mutagenic and reproductive toxicity. Inhalation exposure carries risks of cancer, neuronal damage, and reproductive harm.",
+        "fr": "L'oxyde d'éthylène est un cancérogène humain avéré (Groupe 1) ayant une toxicité mutagène et reproductive. L'exposition à l'inhalation comporte des risques de cancer, de dommages neuronaux et de dommages reproductifs."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "radon": {
+      "cas": "10043-92-2",
+      "name": "Radon",
+      "synonyms": ["radon gas", "Rn"],
+      "molecularFormula": "Rn",
+      "carcinogenicity": "high",
+      "mutagenicity": "low",
+      "genotoxicity": "medium",
+      "chronicToxicity": "medium",
+      "reproductiveToxicity": "low",
+      "exposureRoutes": ["inhalation"],
+      "targetOrgans": ["lungs"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "chromosomal alteration"],
+      "summary": {
+        "en": "Radon is a known human carcinogen (Group 1) causing lung cancer through alpha particle radiation. Indoor radon accumulation presents significant residential and occupational health risks.",
+        "fr": "Le radon est un cancérogène humain avéré (Groupe 1) causant le cancer du poumon par rayonnement de particules alpha. L'accumulation de radon intérieur présente des risques sanitaires résidentiels et professionnels importants."
+      },
+      "source": ["IARC"]
+    },
+    "dioxins": {
+      "cas": "1746-01-6",
+      "name": "Dioxins",
+      "synonyms": ["polychlorinated dibenzo-p-dioxins"],
+      "molecularFormula": "C12H4Cl4O2",
+      "carcinogenicity": "high",
+      "mutagenicity": "medium",
+      "genotoxicity": "high",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "high",
+      "exposureRoutes": ["ingestion", "inhalation"],
+      "targetOrgans": ["liver", "immune system", "reproductive organs"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["DNA damage", "oxidative stress", "hormonal disruption"],
+      "summary": {
+        "en": "Dioxins are known human carcinogens (Group 1) with severe immunotoxic and reproductive effects. Bioaccumulation leads to long-term systemic health impacts.",
+        "fr": "Les dioxines sont des cancérogènes humains avérés (Groupe 1) avec des effets immunotoxiques et reproductifs graves. L'bioaccumulation entraîne des impacts sanitaires systémiques à long terme."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "beryllium": {
+      "cas": "7440-41-7",
+      "name": "Beryllium",
+      "synonyms": ["beryllium metal"],
+      "molecularFormula": "Be",
+      "carcinogenicity": "high",
+      "mutagenicity": "low",
+      "genotoxicity": "medium",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "low",
+      "exposureRoutes": ["inhalation"],
+      "targetOrgans": ["lungs"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["immune response", "DNA damage"],
+      "summary": {
+        "en": "Beryllium is a known human carcinogen (Group 1) causing berylliosis and lung cancer. Inhalation of beryllium dust and fumes presents severe occupational health risks.",
+        "fr": "Le béryllium est un cancérogène humain avéré (Groupe 1) causant la bérylliose et le cancer du poumon. L'inhalation de poussière et de vapeurs de béryllium présente des risques professionnels graves pour la santé."
+      },
+      "source": ["IARC", "GHS"]
+    },
+    "crystalline silica": {
+      "cas": "14808-60-7",
+      "name": "Crystalline Silica",
+      "synonyms": ["quartz", "respirable silica"],
+      "molecularFormula": "SiO2",
+      "carcinogenicity": "high",
+      "mutagenicity": "low",
+      "genotoxicity": "low",
+      "chronicToxicity": "high",
+      "reproductiveToxicity": "low",
+      "exposureRoutes": ["inhalation"],
+      "targetOrgans": ["lungs"],
+      "classification": "Group 1 (IARC)",
+      "mechanisms": ["oxidative stress", "inflammatory response"],
+      "summary": {
+        "en": "Crystalline silica is a known human carcinogen (Group 1) causing silicosis and lung cancer. Chronic inhalation of respirable silica dust presents significant occupational health risks.",
+        "fr": "La silice cristalline est un cancérogène humain avéré (Groupe 1) causant la silicose et le cancer du poumon. L'inhalation chronique de poussière de silice respirable présente des risques professionnels importants pour la santé."
+      },
+      "source": ["IARC", "GHS"]
+    }
+  }
+}

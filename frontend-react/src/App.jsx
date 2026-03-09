@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
 import Header from './components/Header';
 import AnalysisForm from './components/AnalysisForm';
 import Results from './components/Results';
 import Knowledge from './components/Knowledge';
 import About from './components/About';
+import HealthRiskModule from './components/HealthRiskModule';
+import HealthKnowledge from './components/HealthKnowledge';
+import HealthReports from './components/HealthReports';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('analyzer');
@@ -228,6 +232,88 @@ function App() {
     })();
   }, []);
 
+  // Warmup backend to prevent cold start on Render
+  useEffect(() => {
+    const warmupBackend = async () => {
+      try {
+        const backendUrl = import.meta.env.VITE_API_URL || 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com';
+        const response = await fetch(`${backendUrl}/warmup`, {
+          method: 'GET',
+          signal: AbortSignal.timeout(5000)
+        });
+        
+        if (response.ok) {
+          console.log('✅ Backend warmup successful');
+        }
+      } catch (err) {
+        console.warn('⚠️ Backend warmup failed (non-critical):', err.message);
+      }
+    };
+
+    // Initial warmup on page load
+    warmupBackend();
+
+    // Periodic warmup every 10 minutes to prevent sleep on Render free tier
+    const interval = setInterval(warmupBackend, 10 * 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Utility: Fetch with retry logic
+  const fetchWithRetry = async (url, options = {}, maxRetries = 3) => {
+    let lastError;
+    const delays = [1000, 3000, 5000]; // 1s, 3s, 5s
+
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        console.log(`📤 Tentative ${attempt + 1}/${maxRetries + 1}: ${options.method || 'GET'} ${url}`);
+        
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), options.timeout || 30000);
+        
+        const response = await fetch(url, {
+          ...options,
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+          console.log(`✅ Succès à la tentative ${attempt + 1}`);
+          return response;
+        }
+
+        // If 5xx error, retry
+        if (response.status >= 500) {
+          lastError = new Error(`HTTP ${response.status}: ${response.statusText}`);
+          if (attempt < maxRetries) {
+            console.warn(`⚠️ Erreur ${response.status}, attente ${delays[attempt]}ms avant retry...`);
+            await new Promise(resolve => setTimeout(resolve, delays[attempt]));
+            continue;
+          }
+        }
+
+        // If 4xx error, don't retry
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+
+      } catch (err) {
+        if (err.name === 'AbortError') {
+          lastError = new Error('Timeout de la requête (30s)');
+        } else {
+          lastError = err;
+        }
+
+        if (attempt < maxRetries) {
+          console.warn(`❌ Tentative ${attempt + 1} échouée:`, err.message);
+          console.log(`⏳ Attente ${delays[attempt]}ms avant la prochaine tentative...`);
+          await new Promise(resolve => setTimeout(resolve, delays[attempt]));
+        }
+      }
+    }
+
+    throw lastError || new Error('Échec de la requête après plusieurs tentatives');
+  };
+
   // Analysis function
   const handleAnalyze = async (formData) => {
     setIsLoading(true);
@@ -264,21 +350,19 @@ function App() {
 
       console.log("🚀 Envoi au backend:", requestData);
 
-      // Call backend API
-      const backendUrl = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3000'
-        : 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com';
-      const response = await fetch(`${backendUrl}/analyze`, {
+      // Call backend API with retry logic
+      const backendUrl = import.meta.env.VITE_API_URL || 'https://l-ia-dans-la-gestion-des-risques-qviy.onrender.com';
+      console.log("📡 Backend URL:", backendUrl);
+      
+      const response = await fetchWithRetry(`${backendUrl}/analyze`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(requestData)
-      });
-
-      if (!response.ok) {
-        throw new Error(`Erreur backend: ${response.status}`);
-      }
+        body: JSON.stringify(requestData),
+        timeout: 30000
+      }, 2); // Max 2 retries (3 attempts total)
 
       const result = await response.json();
       console.log("✅ Réponse backend:", result);
@@ -294,8 +378,9 @@ function App() {
   };
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen flex flex-col font-sans bg-gradient-to-br from-slate-50 via-emerald-50/30 to-cyan-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <LanguageProvider>
+      <ThemeProvider>
+        <div className="min-h-screen flex flex-col font-sans bg-gradient-to-br from-slate-50 via-emerald-50/30 to-cyan-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
         <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
 
         <main className="flex-grow">
@@ -333,6 +418,12 @@ function App() {
             </div>
           )}
 
+          {currentPage === 'health-risk' && <HealthRiskModule />}
+
+          {currentPage === 'health-knowledge' && <HealthKnowledge />}
+
+          {currentPage === 'health-reports' && <HealthReports />}
+
           {currentPage === 'knowledge' && <Knowledge />}
 
           {currentPage === 'about' && <About />}
@@ -347,7 +438,8 @@ function App() {
           </div>
         </footer>
       </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

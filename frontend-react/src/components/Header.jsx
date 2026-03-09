@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FlaskConical, Sparkles, Brain, Atom, BookOpen } from 'lucide-react';
+import { FlaskConical, Sparkles, Brain, Atom, BookOpen, Heart, FileText } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import LanguageToggle from './LanguageToggle';
 
 const Header = ({ setCurrentPage, currentPage }) => {
     return (
@@ -25,29 +26,77 @@ const Header = ({ setCurrentPage, currentPage }) => {
 
             <div className="container mx-auto relative z-10 px-6 py-12 md:py-16">
                 <div className="flex justify-between items-center mb-8">
-                    {/* Navigation */}
-                    <div className="flex gap-4">
-                        <button
-                            onClick={() => setCurrentPage('analyzer')}
-                            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-                                currentPage === 'analyzer'
-                                    ? 'bg-white/20 border border-white/40 backdrop-blur-sm'
-                                    : 'hover:bg-white/10'
-                            }`}
-                        >
-                            Analyseur
-                        </button>
-                        <button
-                            onClick={() => setCurrentPage('knowledge')}
-                            className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all ${
-                                currentPage === 'knowledge'
-                                    ? 'bg-white/20 border border-white/40 backdrop-blur-sm'
-                                    : 'hover:bg-white/10'
-                            }`}
-                        >
-                            <BookOpen className="w-5 h-5" />
-                            Connaissances
-                        </button>
+                    {/* Navigation - Organized with visual grouping */}
+                    <div className="flex gap-4 flex-wrap items-center">
+                        {/* Group 1: Industrial Safety & Knowledge (Existing Modules) */}
+                        <div className="flex gap-2">
+                            <button
+                                onClick={() => setCurrentPage('analyzer')}
+                                className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                                    currentPage === 'analyzer'
+                                        ? 'bg-white/20 border border-white/40 backdrop-blur-sm'
+                                        : 'hover:bg-white/10'
+                                }`}
+                            >
+                                Analyseur
+                            </button>
+                            <button
+                                onClick={() => setCurrentPage('knowledge')}
+                                className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all ${
+                                    currentPage === 'knowledge'
+                                        ? 'bg-white/20 border border-white/40 backdrop-blur-sm'
+                                        : 'hover:bg-white/10'
+                                }`}
+                            >
+                                <BookOpen className="w-5 h-5" />
+                                Connaissances
+                            </button>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="h-6 w-px bg-white/30"></div>
+
+                        {/* Group 2: Health Risk Assessment (New Independent Module) */}
+                        <div className="flex gap-2">
+                            <button
+                                onClick={() => setCurrentPage('health-risk')}
+                                className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all ${
+                                    currentPage === 'health-risk'
+                                        ? 'bg-white/20 border border-white/40 backdrop-blur-sm'
+                                        : 'hover:bg-white/10'
+                                }`}
+                            >
+                                <Heart className="w-5 h-5" />
+                                Santé
+                            </button>
+                            <button
+                                onClick={() => setCurrentPage('health-knowledge')}
+                                className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all ${
+                                    currentPage === 'health-knowledge'
+                                        ? 'bg-white/20 border border-white/40 backdrop-blur-sm'
+                                        : 'hover:bg-white/10'
+                                }`}
+                            >
+                                <BookOpen className="w-5 h-5" />
+                                Connaissances
+                            </button>
+                            <button
+                                onClick={() => setCurrentPage('health-reports')}
+                                className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all ${
+                                    currentPage === 'health-reports'
+                                        ? 'bg-white/20 border border-white/40 backdrop-blur-sm'
+                                        : 'hover:bg-white/10'
+                                }`}
+                            >
+                                <FileText className="w-5 h-5" />
+                                Rapports
+                            </button>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="h-6 w-px bg-white/30"></div>
+
+                        {/* Group 3: About */}
                         <button
                             onClick={() => setCurrentPage('about')}
                             className={`px-4 py-2 rounded-lg font-semibold transition-all ${
@@ -59,7 +108,10 @@ const Header = ({ setCurrentPage, currentPage }) => {
                             À Propos
                         </button>
                     </div>
-                    <ThemeToggle />
+                    <div className="flex gap-2 items-center">
+                        <LanguageToggle />
+                        <ThemeToggle />
+                    </div>
                 </div>
                 
                 <div className="text-center">

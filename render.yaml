@@ -8,7 +8,27 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      
+      # URL to Flask AI Engine (required)
       - key: FLASK_URL
-        sync: false   # À remplir manuellement dans le dashboard Render
+        value: https://your-flask-Backend.onrender.com
+        sync: false
+      
+      # Allowed Origins for CORS (required for Vercel access)
+      # Format: https://your-frontend.vercel.app or comma-separated for multiple
       - key: ALLOWED_ORIGINS
-        sync: false   # Ex: https://your-frontend.vercel.app
+        value: https://your-frontend.vercel.app
+        sync: false
+
+  # Uncomment if Flask AI Engine is also on Render
+  # - type: web
+  #   name: chemical-risk-python
+  #   runtime: python-3.11
+  #   rootDir: AI_engine
+  #   buildCommand: pip install -r requirements.txt
+  #   startCommand: python app.py
+  #   envVars:
+  #     - key: FLASK_ENV
+  #       value: production
+  #     - key: PORT
+  #       value: 5000

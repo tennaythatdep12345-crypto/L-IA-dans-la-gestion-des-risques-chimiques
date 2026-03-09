@@ -35,15 +35,34 @@ const FLASK_TIMEOUT = 30000; // 30 secondes
 // ============================================================================
 
 // CORS: Permet les requêtes cross-origin depuis le frontend
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(',')
-    : '*';
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? [
+      'https://l-ia-dans-la-gestion-des-risques.vercel.app',
+      'https://votre-frontend.vercel.app',
+      ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()) : [])
+    ]
+  : ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://127.0.0.1:5173'];
 
 app.use(cors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin: function(origin, callback) {
+        // Allow requests with no origin (like mobile apps, curl requests)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) !== -1 || !process.env.ALLOWED_ORIGINS) {
+            callback(null, true);
+        } else {
+            callback(new Error(`CORS not allowed for origin: ${origin}`));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    optionsSuccessStatus: 200,
+    maxAge: 86400 // 24 hours
 }));
+
+console.log(`[CORS] Production: ${process.env.NODE_ENV === 'production'}`);
+console.log(`[CORS] Allowed origins:`, allowedOrigins);
 
 // Parser le JSON dans le body des requêtes
 app.use(express.json({ limit: '10mb' }));
@@ -54,7 +73,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Middleware de logging pour toutes les requêtes
 app.use((req, res, next) => {
     const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] ${req.method} ${req.path}`);
+    console.log(`[${timestamp}] ${req.method} ${req.path} - Origin: ${req.get('origin') || 'no-origin'}`);
     next();
 });
 
@@ -105,6 +124,18 @@ app.get('/health', async (req, res) => {
             timestamp: new Date().toISOString()
         });
     }
+});
+
+/**
+ * Route de warmup - Prévient le cold start sur Render
+ * À appeler régulièrement pour éviter que Render sleep le backend
+ */
+app.get('/warmup', (req, res) => {
+    res.json({
+        status: 'warmed_up',
+        timestamp: new Date().toISOString(),
+        message: 'Backend is ready to process requests'
+    });
 });
 
 /**
