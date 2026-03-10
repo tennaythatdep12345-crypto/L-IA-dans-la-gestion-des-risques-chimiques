@@ -28,7 +28,7 @@ const FLASK_AI_ENGINE_URL = process.env.FLASK_URL || 'http://localhost:5000';
 const ANALYZE_ENDPOINT = `${FLASK_AI_ENGINE_URL}/analyze`;
 
 // Timeout pour les requêtes vers Flask (en millisecondes)
-const FLASK_TIMEOUT = 30000; // 30 secondes
+const FLASK_TIMEOUT = 60000; // 60 secondes pour Render
 
 // ============================================================================
 // MIDDLEWARES

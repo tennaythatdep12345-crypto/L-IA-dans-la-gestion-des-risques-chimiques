@@ -210,6 +210,18 @@ def method_not_allowed(error):
     }), 405
 
 
+@app.route('/warmup', methods=['GET'])
+def warmup():
+    """
+    Endpoint pour prévenir le cold start sur Render.
+    """
+    logger.info("Warmup request received")
+    return jsonify({
+        "status": "warmed_up",
+        "message": "Flask API is ready"
+    }), 200
+
+
 if __name__ == '__main__':
     logger.info("Démarrage du moteur d'analyse des risques chimiques")
     logger.info("Port: 5000")
@@ -219,5 +231,6 @@ if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
         port=5000,
-        debug=False
+        debug=False,
+        threaded=True
     )

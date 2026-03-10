@@ -269,7 +269,7 @@ function App() {
         console.log(`📤 Tentative ${attempt + 1}/${maxRetries + 1}: ${options.method || 'GET'} ${url}`);
         
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), options.timeout || 30000);
+        const timeoutId = setTimeout(() => controller.abort(), options.timeout || 60000);
         
         const response = await fetch(url, {
           ...options,
