@@ -34,10 +34,10 @@ CORS(app, supports_credentials=True)
 
 # Import des services APRÈS création de l'app pour mieux gérer les erreurs
 try:
-    print("[Import] Tentative d'import du module analyzer...")
-    from services.analyzer import analyze_risk
-    logger.info("✓ Service analyzer chargé avec succès")
-    print("[Import] ✓ analyzer importé")
+    print("[Import] Tentative d'import du module analyzer optimisé...")
+    from services.analyzer_optimized import analyze_risk
+    logger.info("✓ Service analyzer optimisé chargé avec succès")
+    print("[Import] ✓ Optimized analyzer importé")
 except ImportError as e:
     logger.error(f"✗ IMPORT ERROR lors du chargement du service analyzer: {str(e)}")
     print(f"[Import] ✗ ImportError: {e}")
@@ -52,22 +52,27 @@ except Exception as e:
 # Pre-cache CSV data on startup for faster requests
 print("[Cache] Pré-chargement des données CSV...")
 try:
-    from utils.csv_loader import load_substances, load_incompatibilities
+    from cache import initialize_cache, get_cache_stats
     import time
     start_time = time.time()
     
-    # Load data and keep in memory
-    substances_data = load_substances()
-    incompatibilities_data = load_incompatibilities()
+    # Initialize global cache
+    cache_result = initialize_cache()
     
     cache_time = time.time() - start_time
-    print(f"[Cache] ✓ Données chargées en {cache_time:.2f}s")
-    print(f"[Cache] Substances: {len(substances_data)} items")
-    print(f"[Cache] Incompatibilités: {len(incompatibilities_data)} items")
-    logger.info(f"✓ Data cache initialized ({cache_time:.2f}s)")
+    if cache_result.get('success'):
+        stats = get_cache_stats()
+        print(f"[Cache] ✓ Données chargées en {cache_time:.2f}s")
+        print(f"[Cache] Substances: {cache_result.get('substances_count')} items")
+        print(f"[Cache] Incompatibilités: {cache_result.get('incompatibilities_count')} items")
+        print(f"[Cache] Indexes: {stats['substance_names_indexed']} names, {stats['incompatibility_pairs_indexed']} pairs")
+        logger.info(f"✓ Data cache initialized ({cache_time:.2f}s)")
+    else:
+        logger.warning(f"⚠️ Cache initialization failed: {cache_result.get('error')}")
+        print(f"[Cache] ⚠️ Initialization failed: {cache_result.get('error')}")
 except Exception as e:
-    logger.warning(f"⚠️ Cache preload failed (non-critical): {str(e)}")
-    print(f"[Cache] ⚠️ Preload failed: {e}")
+    logger.warning(f"⚠️ Cache initialization failed (non-critical): {str(e)}")
+    print(f"[Cache] ⚠️ Failed: {e}")
 
 
 @app.route('/analyze', methods=['POST','OPTIONS'])
@@ -247,6 +252,27 @@ def warmup():
         "status": "warmed_up",
         "message": "Flask API is ready"
     }), 200
+
+
+@app.route('/optimization-stats', methods=['GET'])
+def optimization_stats():
+    """
+    Endpoint pour vérifier les statistiques du cache et les performances.
+    """
+    try:
+        from cache import get_cache_stats
+        stats = get_cache_stats()
+        return jsonify({
+            "status": "ok",
+            "message": "Cache optimization stats",
+            "cache": stats,
+            "timestamp": __import__('time').time()
+        }), 200
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
 
 
 if __name__ == '__main__':
