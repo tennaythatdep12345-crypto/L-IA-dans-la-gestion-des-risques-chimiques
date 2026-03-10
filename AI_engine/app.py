@@ -49,6 +49,26 @@ except Exception as e:
     import traceback
     traceback.print_exc()
 
+# Pre-cache CSV data on startup for faster requests
+print("[Cache] Pré-chargement des données CSV...")
+try:
+    from utils.csv_loader import load_substances, load_incompatibilities
+    import time
+    start_time = time.time()
+    
+    # Load data and keep in memory
+    substances_data = load_substances()
+    incompatibilities_data = load_incompatibilities()
+    
+    cache_time = time.time() - start_time
+    print(f"[Cache] ✓ Données chargées en {cache_time:.2f}s")
+    print(f"[Cache] Substances: {len(substances_data)} items")
+    print(f"[Cache] Incompatibilités: {len(incompatibilities_data)} items")
+    logger.info(f"✓ Data cache initialized ({cache_time:.2f}s)")
+except Exception as e:
+    logger.warning(f"⚠️ Cache preload failed (non-critical): {str(e)}")
+    print(f"[Cache] ⚠️ Preload failed: {e}")
+
 
 @app.route('/analyze', methods=['POST','OPTIONS'])
 def analyze():
@@ -79,6 +99,10 @@ def analyze():
     """
     
     try:
+        # Log request timing
+        import time
+        start_time = time.time()
+        
         # Validation du format JSON
         if not request.is_json:
             logger.warning("Requête reçue sans en-tête Content-Type: application/json")
@@ -154,12 +178,14 @@ def analyze():
             return jsonify(resultat), 400
         
         # Succès: retourner le résultat de l'analyse
-        logger.info(f"Analyse réussie. Score: {resultat.get('score_risque_global')}")
+        elapsed = time.time() - start_time
+        logger.info(f"Analyse réussie en {elapsed:.2f}s. Score: {resultat.get('score_risque_global')}")
         return jsonify(resultat), 200
     
     except ValueError as e:
         # Erreur de validation des données
-        logger.error(f"Erreur de validation: {str(e)}")
+        elapsed = time.time() - start_time
+        logger.error(f"Erreur de validation après {elapsed:.2f}s: {str(e)}")
         return jsonify({
             "success": False,
             "erreur": f"Erreur de validation: {str(e)}"
@@ -167,7 +193,8 @@ def analyze():
     
     except Exception as e:
         # Erreur générale non prévue
-        logger.error(f"Erreur interne non prévue: {str(e)}")
+        elapsed = time.time() - start_time
+        logger.error(f"Erreur interne non prévue après {elapsed:.2f}s: {str(e)}")
         return jsonify({
             "success": False,
             "erreur": "Erreur interne du serveur"
