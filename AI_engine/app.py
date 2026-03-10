@@ -30,7 +30,7 @@ print(f"Data dir exists: {os.path.isdir('../data')}")
 app = Flask(__name__)
 
 # Activation de CORS (Cross-Origin Resource Sharing)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 # Import des services APRÈS création de l'app pour mieux gérer les erreurs
 try:
@@ -50,7 +50,7 @@ except Exception as e:
     traceback.print_exc()
 
 
-@app.route('/analyze', methods=['POST'])
+@app.route('/analyze', methods=['POST','OPTIONS'])
 def analyze():
     """
     Endpoint principal pour l'analyse des risques chimiques.
