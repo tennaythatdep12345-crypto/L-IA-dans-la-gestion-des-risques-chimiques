@@ -6,15 +6,25 @@ IUT Génie Chimique - 1ère année
 
 import logging
 import json
+import os
+import sys
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-# Configuration du logging
+# Log Python paths trước khi import
+logger_setup = logging.getLogger('startup')
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+print(f"\n=== FLASK STARTUP DEBUG ===")
+print(f"Current working directory: {os.getcwd()}")
+print(f"Python path: {sys.path}")
+print(f"Script location: {__file__}")
+print(f"AI_engine dir exists: {os.path.isdir('.')}")
+print(f"Data dir exists: {os.path.isdir('../data')}")
 
 # Initialisation de l'application Flask
 app = Flask(__name__)
@@ -24,13 +34,20 @@ CORS(app)
 
 # Import des services APRÈS création de l'app pour mieux gérer les erreurs
 try:
+    print("[Import] Tentative d'import du module analyzer...")
     from services.analyzer import analyze_risk
     logger.info("✓ Service analyzer chargé avec succès")
-except Exception as e:
-    logger.error(f"✗ ERREUR lors du chargement du service analyzer: {str(e)}")
-    logger.error(f"  Type: {type(e).__name__}")
+    print("[Import] ✓ analyzer importé")
+except ImportError as e:
+    logger.error(f"✗ IMPORT ERROR lors du chargement du service analyzer: {str(e)}")
+    print(f"[Import] ✗ ImportError: {e}")
     import traceback
-    logger.error(traceback.format_exc())
+    traceback.print_exc()
+except Exception as e:
+    logger.error(f"✗ ERROR lors du chargement du service analyzer: {str(e)}")
+    print(f"[Import] ✗ Exception: {e}")
+    import traceback
+    traceback.print_exc()
 
 
 @app.route('/analyze', methods=['POST'])
